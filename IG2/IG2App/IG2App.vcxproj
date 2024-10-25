@@ -98,6 +98,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -119,20 +120,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Constants.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="Heroe.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="IG2Object.h" />
-    <ClInclude Include="LabManager.h" />
+    <ClInclude Include="LaberintoManager.h" />
     <ClInclude Include="Muro.h" />
     <ClInclude Include="Perla.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Heroe.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />
     <ClCompile Include="IG2Object.cpp" />
-    <ClCompile Include="LabManager.cpp" />
+    <ClCompile Include="LaberintoManager.cpp" />
     <ClCompile Include="Muro.cpp" />
     <ClCompile Include="Perla.cpp" />
   </ItemGroup>

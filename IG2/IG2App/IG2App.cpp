@@ -1,4 +1,7 @@
 #include "IG2App.h"
+#include "Config.h"
+#include "LaberintoManager.h"
+#include <iostream>
 
 using namespace Ogre;
 using namespace std;
@@ -84,27 +87,30 @@ void IG2App::setupScene(void){
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     //mLightNode = mCamNode->createChildSceneNode("nLuz");
     mLightNode->attachObject(luz);
-    mLightNode->setDirection(Ogre::Vector3(-0.25, -0.5, -1));
+    mLightNode->setDirection(Ogre::Vector3(0, -0.5, -1));
     
-    //------------------------------------------------------------------------
-    //Creando el laberinto
-    mLab = new LabManager(mSM->getRootSceneNode()->createChildSceneNode("Laberinto"), mSM, "mapa1.txt");
+
     
     //------------------------------------------------------------------------
     // Creating Sinbad
-    /*
-    Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
+    //Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
     mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-    mSinbadNode->attachObject(ent);*/
+    //mSinbadNode->attachObject(ent);
+    
+    LaberintoManager lM(mSM->getRootSceneNode()->createChildSceneNode("cuno_1"), mSM, "mapa1.txt");
 
+    //Muro* m = new Muro(/*Ogre::Vector3(0, 0, 0), mSM->getRootSceneNode(), mSM*/);
+    //Muro* m2 = new Muro(Ogre::Vector3(CUBE_SIZE, 0, 0), mSM->getRootSceneNode()->createChildSceneNode("cuno_1"), mSM);    
+    //Muro* m3 = new Muro(Ogre::Vector3(CUBE_SIZE*2, 0, 0), mSM->getRootSceneNode()->createChildSceneNode("cuno_2"), mSM);
+    
     // Show bounding box
-    //mSinbadNode->showBoundingBox(true);
+    mSinbadNode->showBoundingBox(true);
     
     // Set position of Sinbad
     //mSinbadNode->setPosition(x, y, z);
     
-    // Set scale of Sinbad
-    //mSinbadNode->setScale(20, 20, 20);
+    // Set scale of Sinbad                      
+    mSinbadNode->setScale(20, 20, 20);
     
     //mSinbadNode->yaw(Ogre::Degree(-45));
     //mSinbadNode->setVisible(false);    

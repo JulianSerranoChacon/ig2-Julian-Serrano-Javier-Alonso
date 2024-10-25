@@ -9,7 +9,7 @@
 #include <OgreMeshManager.h>
 #include <SDL_keycode.h>
 #include <iostream>
-#include "Constants.h"
+#include "Config.h"
 
 using namespace Ogre;
 using namespace std;
