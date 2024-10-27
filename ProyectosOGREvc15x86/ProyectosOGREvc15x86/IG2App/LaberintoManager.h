@@ -11,10 +11,10 @@ public:
 	~LaberintoManager();
 
 	void loadLevelFromFile(std::string file);
-private:
-	Ogre::SceneNode* mLabNode = nullptr;
-	Ogre::SceneManager* mSM = nullptr;
-	void readChars(char c, int i, int j);
+private:private:
+	Ogre::SceneNode* mNode;
+	Ogre::SceneManager* mSM;
+	void ReadChar(char c, int i, int j);
 	double CentraLab(int a);
 };
 

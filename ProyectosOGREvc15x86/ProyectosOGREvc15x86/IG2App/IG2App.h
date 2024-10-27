@@ -13,6 +13,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
+#include "LaberintoManager.h"
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
 
@@ -38,6 +39,8 @@ protected:
     
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;
+
+    LaberintoManager* mLab;
 };
 
 #endif
