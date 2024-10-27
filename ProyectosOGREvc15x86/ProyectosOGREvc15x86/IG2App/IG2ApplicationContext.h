@@ -111,7 +111,7 @@ namespace OgreBites
 		virtual bool oneTimeConfig();
 
 		/**
-		When input is grabbed the mouse is confined to the window.
+		When input is grabbed the mouse is confined to the window. 
 		*/
 		void setWindowGrab(bool grab);  
 

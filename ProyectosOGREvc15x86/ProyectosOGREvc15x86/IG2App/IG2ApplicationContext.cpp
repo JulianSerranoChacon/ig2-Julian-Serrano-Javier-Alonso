@@ -18,7 +18,7 @@ Adaptado de OgreApplicationContext.cpp  en OGREbites\src
 #include <OgreBitesConfigDialog.h>
 #include <OgreWindowEventUtilities.h>
 
-//#include <OgreConfigPaths.h>    // IG2: lo quito xq las rutas son absolutas y deben ser relativas al directorio de la solución
+//#include <OgreConfigPaths.h>    // IG2: lo quito xq las rutas son absolutas y deben ser relativas al directorio de la solución  Input
 //#include <OgreOverlaySystem.h>  // IG2: lo he incluido en el .h para evitar declaraciones adelantadas
 //#include <SDL.h>				  // IG2: lo he incluido en el .h para evitar declaraciones adelantadas
 #include <SDL_video.h>
@@ -49,6 +49,7 @@ namespace OgreBites {
 	{
 		createRoot();
 
+		//Comentar si quieres desactivar la pantallita de settings inicial
         //mRoot->showConfigDialog(OgreBites::getNativeConfigDialog());
         
         if (oneTimeConfig())
@@ -257,8 +258,7 @@ namespace OgreBites {
 
 		// just avoid "window not responding"
 		WindowEventUtilities::messagePump();  
-	}
-
+	}	
 	void IG2ApplicationContext::_fireInputEvent(const Event& event) const
 	{
 		for (std::set<InputListener*>::iterator it = mInputListeners.begin(); it != mInputListeners.end(); ++it)
@@ -396,4 +396,3 @@ namespace OgreBites {
 
 
 }
-
