@@ -1,14 +1,12 @@
 #include "LaberintoManager.h"
 #include "Muro.h"
 #include "Perla.h"
+#include "Heroe.h"
 #include "Config.h"
 #include <fstream>
 
 
-LaberintoManager::LaberintoManager(SceneNode* sn, SceneManager* sm) : mNode(sn), mSM(sm)
-{
-}
-LaberintoManager::LaberintoManager(SceneNode* sn, SceneManager* sm, std::string file) : mNode(sn), mSM(sm)
+LaberintoManager::LaberintoManager(IG2App* _app, SceneNode* sn, SceneManager* sm, std::string file) : app(_app), mNode(sn), mSM(sm)
 {
 	loadLevelFromFile(file);
 }
@@ -28,8 +26,12 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 	int nCols;
 	reader >> nFils;
 	reader >> nCols;
-	char c;
+	labArray = new bool*[nFils];
 	for (int i = 0; i < nFils; i++) {
+		labArray[i] = new bool[nCols];
+	}
+	char c;
+	for (int i = 0; i < nFils; i++) {		
 		for (int j = 0; j < nCols; j++) {
 			reader >> c;
 			ReadChar(c, i, j);
@@ -43,12 +45,19 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 {
 	IG2Object* obj;
 	switch (c) {
-	case 'x':
-		obj = new Muro(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
+	case 'x':		
+		labArray[i][j] = false;
+		obj = new Muro(Ogre::Vector3(CUBE_SIZE * i, 0, CUBE_SIZE * j), mNode->createChildSceneNode(), mSM);
 		break;
-	case 'o':
-		obj = new Perla(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
+	case 'o':		
+		labArray[i][j] = true;
+		obj = new Perla(Ogre::Vector3(CUBE_SIZE * i, 0, CUBE_SIZE * j), mNode->createChildSceneNode(), mSM);
 		obj->setScale(Ogre::Vector3(PERLA_SCALE, PERLA_SCALE, PERLA_SCALE));
+		break;
+	case 'h':
+		labArray[i][j] = true;
+		obj = new Heroe(Ogre::Vector3(CUBE_SIZE * i, 0, CUBE_SIZE * j), mNode->createChildSceneNode(), mSM, VIDAS,"Sinbad.mesh",labArray,app);
+		obj->setScale(Ogre::Vector3(OGRE_SCALE, OGRE_SCALE, OGRE_SCALE));
 		break;
 	default:
 		break;

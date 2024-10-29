@@ -88,7 +88,7 @@ void IG2App::setupScene(void) {
 
     //------------------------------------------------------------------------
     //Creando el laberinto
-    mLab = new LaberintoManager(mSM->getRootSceneNode()->createChildSceneNode("Laberinto"), mSM, "mapa1.txt");
+    mLab = new LaberintoManager(this, mSM->getRootSceneNode()->createChildSceneNode("Laberinto"), mSM, "mapa1.txt");
 
     //------------------------------------------------------------------------
     // Creating Sinbad
