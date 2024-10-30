@@ -33,3 +33,9 @@ bool Heroe::keyPressed(const OgreBites::KeyboardEvent& ev)
 	}
 	return true;
 }
+
+void Heroe::frameRendered(const Ogre::FrameEvent& evt)
+{
+	walk();
+
+}

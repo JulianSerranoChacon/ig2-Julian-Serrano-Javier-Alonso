@@ -1,6 +1,8 @@
 #pragma once
 #include "Mob.h"
 #include "IG2App.h"
+#include "Perla.h"
+#include <vector>
 class Heroe : public Mob
 {
 public:
@@ -9,5 +11,6 @@ public:
 	virtual void init();
 	virtual void takeDamage();	
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& ev);
+	void frameRendered(const Ogre::FrameEvent& evt);	
 };
 
