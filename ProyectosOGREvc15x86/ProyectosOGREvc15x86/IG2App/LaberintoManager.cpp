@@ -47,16 +47,16 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 	switch (c) {
 	case 'x':		
 		labArray[i][j] = false;
-		obj = new Muro(Ogre::Vector3(CUBE_SIZE * i, 0, CUBE_SIZE * j), mNode->createChildSceneNode(), mSM);
+		obj = new Muro(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
 		break;
 	case 'o':		
 		labArray[i][j] = true;
-		obj = new Perla(Ogre::Vector3(CUBE_SIZE * i, 0, CUBE_SIZE * j), mNode->createChildSceneNode(), mSM);
+		obj = new Perla(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
 		obj->setScale(Ogre::Vector3(PERLA_SCALE, PERLA_SCALE, PERLA_SCALE));
 		break;
 	case 'h':
 		labArray[i][j] = true;
-		obj = new Heroe(Ogre::Vector3(CUBE_SIZE * i, 0, CUBE_SIZE * j), mNode->createChildSceneNode(), mSM, VIDAS,"Sinbad.mesh",labArray,app);
+		obj = new Heroe(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM, VIDAS,"Sinbad.mesh",labArray,app);
 		obj->setScale(Ogre::Vector3(OGRE_SCALE, OGRE_SCALE, OGRE_SCALE));
 		break;
 	default:
