@@ -39,6 +39,16 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 		}
 	}
 	reader.close();
+	Ogre::MeshManager::getSingleton().createPlane("suelo", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Plane(Vector3::UNIT_Y, 0), 1,1,1,1,true,
+													1, 1.0, 1.0, Vector3::UNIT_Z);
+	//Creación del suelo
+	Ogre::Entity* Suel = mSM->createEntity("suelo");
+	//Suel->setMaterialName("suelo/Default");
+	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
+	nodoSuelo->setPosition((nFils-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nCols-1)*CUBE_SIZE/2);
+	nodoSuelo->setScale(nFils*CUBE_SIZE,0, nCols*CUBE_SIZE);
+	nodoSuelo->attachObject(Suel);
+
 	mNode->setPosition(CentraLab(nFils), 0, CentraLab(nCols));
 }
 
@@ -46,8 +56,7 @@ void LaberintoManager::frameRendered(const Ogre::FrameEvent& evt)
 {	
 	for (int i = 0; i < perlas.size(); i++) {
 		if (mH->getAABB().intersects(perlas[i]->getAABB())) {
-			mH->addPerl();
-			std::cout << mH->getPerl();
+			mH->addPerl();			
 			Perla* p = perlas[i];
 			perlas.erase(perlas.begin() + i);
 			p->removeEntity();

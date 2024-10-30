@@ -25,7 +25,11 @@ void Mob::walk()
 {	
 	//Aquí comprueba si hay que hacer algún cambio de dirección
 	if (dirAct != dirNueva) {
-		if (checkDir()) dirAct = dirNueva;
+		if (checkDir()) {
+			dirAct = dirNueva;
+			Quaternion q = getOrientation().getRotationTo(dirNueva);
+			//rotate(q);
+		}
 	}	
 	//Aquí comprueba si se va a chocar con un muro
 	double margenX = (dirAct.x* CUBE_SIZE)/-2;
