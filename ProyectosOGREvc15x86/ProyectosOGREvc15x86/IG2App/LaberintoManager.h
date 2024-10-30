@@ -5,7 +5,8 @@
 #include <string>
 using namespace Ogre;
 class IG2App;
-class IG2Object;
+class Heroe;
+class Perla;
 
 class LaberintoManager : public OgreBites::InputListener
 {
@@ -22,7 +23,7 @@ private:
 	double CentraLab(int a);
 	bool** labArray;
 	IG2App* app;
-	std::vector<IG2Object*> perlas;
-	IG2Object* mH;
+	std::vector<Perla*> perlas;
+	Heroe* mH;
 };
 

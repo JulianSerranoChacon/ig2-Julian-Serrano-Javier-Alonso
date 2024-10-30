@@ -12,5 +12,9 @@ public:
 	virtual void takeDamage();	
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& ev);
 	void frameRendered(const Ogre::FrameEvent& evt);	
+	void addPerl() { numPerls++; };
+	int getPerl() { return numPerls; };
+private:
+	int numPerls;
 };
 
