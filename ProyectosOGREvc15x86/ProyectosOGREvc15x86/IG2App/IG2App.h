@@ -21,12 +21,13 @@ public:
     explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
     virtual ~IG2App() { };                                    // delete -> shutdown()
  
+    OgreBites::TextBox* getTextBox() { return mTextBox; };
 protected:
     virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
-    
+
     
     Ogre::SceneNode* mSinbadNode = nullptr;
       
@@ -39,8 +40,10 @@ protected:
     
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;
+    
 
     LaberintoManager* mLab;
+    OgreBites::TextBox* mTextBox;
 };
 
 #endif

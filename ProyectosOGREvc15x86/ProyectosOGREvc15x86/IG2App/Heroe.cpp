@@ -1,8 +1,11 @@
 #include "Heroe.h"
+#include <string>
 
 Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, uint nlifes, string meshName, bool** arr, IG2App*app):Mob(initPos,node,sceneMng,nlifes,meshName,arr, PLAYER_SPEED)
 {
 	app->addInputListener(this);
+	mTextBox = app->getTextBox();
+	updateTextBox();
 }
 
 void Heroe::init()
@@ -38,4 +41,13 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 {
 	walk();
 
+}
+
+void Heroe::updateTextBox()
+{	
+	std::string st = "Vidas: ";
+	st += std::to_string(numVidas);	
+	st += "\nPuntos: ";
+	st += std::to_string(numPerls * PUNTOS_POR_PERLA);
+	mTextBox->setText(st);
 }

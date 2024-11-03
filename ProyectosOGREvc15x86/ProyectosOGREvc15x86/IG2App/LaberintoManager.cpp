@@ -8,7 +8,7 @@
 
 LaberintoManager::LaberintoManager(IG2App* _app, SceneNode* sn, SceneManager* sm, std::string file) : app(_app), mNode(sn), mSM(sm)
 {
-	app->addInputListener(this);
+	app->addInputListener(this);	
 	loadLevelFromFile(file);
 }
 
@@ -43,7 +43,7 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 													1, 1.0, 1.0, Vector3::UNIT_Z);
 	//Creación del suelo
 	Ogre::Entity* Suel = mSM->createEntity("suelo");
-	//Suel->setMaterialName("suelo/Default");
+	//Suel->setMaterialName("example/stonesFloor");
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
 	nodoSuelo->setPosition((nFils-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nCols-1)*CUBE_SIZE/2);
 	nodoSuelo->setScale(nFils*CUBE_SIZE,0, nCols*CUBE_SIZE);

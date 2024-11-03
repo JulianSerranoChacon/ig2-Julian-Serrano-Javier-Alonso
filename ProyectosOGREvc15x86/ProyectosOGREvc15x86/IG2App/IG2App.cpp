@@ -40,7 +40,9 @@ void IG2App::setup(void) {
 
     mSM->addRenderQueueListener(mOverlaySystem);
     mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
-    mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
+    //mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
+    mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "AreaTextBox", "B2", 250);
+    mTextBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "TextBox", "B3", 280, 175);            
     addInputListener(mTrayMgr);
 
     // Adds the listener for this object
