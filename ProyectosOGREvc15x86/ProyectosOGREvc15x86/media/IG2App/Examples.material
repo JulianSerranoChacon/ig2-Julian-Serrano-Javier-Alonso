@@ -1,0 +1,46 @@
+material Examples/BeachStones
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.1 0.1 0.1
+
+			texture_unit
+			{
+				texture BeachStones.jpg
+			}
+		}
+	}
+}
+material Examples/BumpyMetal
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.75 0.75 0.75
+
+			texture_unit
+			{
+				texture BumpyMetal.jpg
+			}
+		}
+	}
+}
+material Examples/CloudySky
+{
+	technique
+	{
+		pass
+		{
+			lighting off			
+
+			texture_unit
+			{
+				texture clouds.jpg
+				scroll_anim 0.15 0
+			}
+		}
+	}
+}

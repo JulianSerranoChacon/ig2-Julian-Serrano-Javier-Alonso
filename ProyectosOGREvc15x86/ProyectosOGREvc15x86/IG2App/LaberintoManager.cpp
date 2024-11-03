@@ -42,8 +42,8 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 	Ogre::MeshManager::getSingleton().createPlane("suelo", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Plane(Vector3::UNIT_Y, 0), 1,1,1,1,true,
 													1, 1.0, 1.0, Vector3::UNIT_Z);
 	//Creación del suelo
-	Ogre::Entity* Suel = mSM->createEntity("suelo");
-	//Suel->setMaterialName("example/stonesFloor");
+	Ogre::Entity* Suel = mSM->createEntity("suelo");	
+	Suel->setMaterialName("Examples/BeachStones");
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
 	nodoSuelo->setPosition((nFils-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nCols-1)*CUBE_SIZE/2);
 	nodoSuelo->setScale(nFils*CUBE_SIZE,0, nCols*CUBE_SIZE);
@@ -71,12 +71,14 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 	case 'x':		
 		labArray[i][j] = false;
 		obj = new Muro(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
+		obj->setMaterialName("Examples/BumpyMetal");
 		break;
 	case 'o':		
 		labArray[i][j] = true;
 		obj = new Perla(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
 		obj->setScale(Ogre::Vector3(PERLA_SCALE, PERLA_SCALE, PERLA_SCALE));
 		perlas.push_back((Perla*)obj);
+		obj->setMaterialName("Examples/CloudySky");
 		break;
 	case 'h':
 		labArray[i][j] = true;
