@@ -15,7 +15,7 @@ public:
 protected:
 
 	Ogre::SceneNode* mLightNode;
-	uint cruceX;
-	uint cruceY;
+	uint cruceX =0;
+	uint cruceY =0;
 };
 

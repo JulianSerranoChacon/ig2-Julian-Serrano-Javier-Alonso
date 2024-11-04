@@ -33,6 +33,11 @@ bool Enemy::EstaEnCruce()
 	double margenZ = (dirAct.z * CUBE_SIZE) / -2;
 	uint _x = (PosX + margenX) / CUBE_SIZE;
 	uint _y = (PosZ + margenZ) / CUBE_SIZE;
-	return (labArray[_x][_y + 1] || labArray[_x][_y - 1]) && (labArray[_x+1][_y] || labArray[_x-1][_y]);
+	if (_x != cruceX && _y != cruceY) {
+		cruceX = _x;
+		cruceY = _y;
+		return (labArray[_x][_y + 1] || labArray[_x][_y - 1]) && (labArray[_x + 1][_y] || labArray[_x - 1][_y]);
+	}
+	else return false;
 }
 
