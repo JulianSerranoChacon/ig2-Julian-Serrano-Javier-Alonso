@@ -90,7 +90,7 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 		break;
 	case 'h':
 		labArray[i][j] = true;
-		obj = new Heroe(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM, VIDAS,"Sinbad.mesh",labArray,app);
+		obj = new Heroe(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode("Heroe"), mSM, VIDAS, "Sinbad.mesh", labArray, app);
 		obj->setScale(Ogre::Vector3(OGRE_SCALE, OGRE_SCALE, OGRE_SCALE));
 		mH = (Heroe*)obj;
 		break;
