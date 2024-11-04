@@ -18,9 +18,11 @@ void EnemySeeker::init()
 void EnemySeeker::calculateDirection()
 {
 	Entity* obj = mSM->getEntity("Heroe");
-	Heroe* hero = (Heroe*)obj;
-	cout << hero->getPosition().x;
+	hero = (Heroe*)obj;
+	Vector3 hP = hero->getPosition();
+	Vector3 mP = getPosition();
 
+	//chooseDir(v);
 }
 
 void EnemySeeker::frameRendered(const Ogre::FrameEvent& evt)
@@ -29,7 +31,13 @@ void EnemySeeker::frameRendered(const Ogre::FrameEvent& evt)
 	walk();
 }
 
-Vector3 EnemySeeker::chooseDir()
+Vector3 EnemySeeker::chooseDir(Vector3 v)
 {
 	return Vector3();
+}
+
+bool EnemySeeker::checkCruce()
+{
+
+	return false;
 }

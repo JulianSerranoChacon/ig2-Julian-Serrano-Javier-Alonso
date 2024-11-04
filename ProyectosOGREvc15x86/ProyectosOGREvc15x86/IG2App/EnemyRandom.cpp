@@ -17,7 +17,7 @@ void EnemyRandom::init()
 
 void EnemyRandom::calculateDirection()
 {
-	if (checkWallCollision()) {
+	if (checkWallCollision() || EstaEnCruce()) {
 		dirNueva = chooseDir();
 	}
 }

@@ -1,5 +1,7 @@
 #pragma once
 #include "Enemy.h"
+#include <queue>
+class Heroe;
 class EnemySeeker: public Enemy
 {
 public:
@@ -10,6 +12,7 @@ public:
 	virtual void calculateDirection();
 	void frameRendered(const Ogre::FrameEvent& evt);
 private:
-	Vector3 chooseDir();
+	Vector3 chooseDir(Vector3 v);
+	Heroe* hero;
 };
 
