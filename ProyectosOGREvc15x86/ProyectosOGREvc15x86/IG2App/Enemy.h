@@ -10,8 +10,10 @@ public:
 	virtual void takeDamage() {};
 	virtual void calculateDirection();
 	void frameRendered(const Ogre::FrameEvent& evt) = 0;
+	bool EstaEnCruce();
 
 protected:
+
 	Ogre::SceneNode* mLightNode;
 };
 

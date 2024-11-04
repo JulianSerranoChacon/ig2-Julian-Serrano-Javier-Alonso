@@ -27,3 +27,12 @@ void Enemy::calculateDirection()
 {
 }
 
+bool Enemy::EstaEnCruce()
+{	
+	double margenX = (dirAct.x * CUBE_SIZE) / -2;
+	double margenZ = (dirAct.z * CUBE_SIZE) / -2;
+	uint _x = (PosX + margenX) / CUBE_SIZE;
+	uint _y = (PosZ + margenZ) / CUBE_SIZE;
+	return (labArray[_x][_y + 1] || labArray[_x][_y - 1]) && (labArray[_x+1][_y] || labArray[_x-1][_y]);
+}
+
