@@ -9,11 +9,12 @@ public:
 	Mob() {};
 	Mob(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, uint nlifes, string meshName, bool** arr, float _speed);
 	virtual ~Mob();
-	virtual void init();
+	virtual void init() = 0;
 	virtual void takeDamage() = 0;
 	virtual void changeDirection(Vector3 newDir);
 	virtual void walk();
 	virtual bool checkDir();
+	virtual bool checkWallCollision();
 	void frameRendered(const Ogre::FrameEvent& evt);
 protected:
 	float speed;

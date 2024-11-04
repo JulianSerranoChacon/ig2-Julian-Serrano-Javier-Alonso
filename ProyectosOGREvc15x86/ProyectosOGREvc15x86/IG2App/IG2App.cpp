@@ -78,7 +78,7 @@ void IG2App::setupScene(void) {
     //------------------------------------------------------------------------
     // Creating the light
     
-    /*
+    
 
     //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
     Light* luz = mSM->createLight("Luz");
@@ -90,7 +90,7 @@ void IG2App::setupScene(void) {
     mLightNode->attachObject(luz);
     mLightNode->setDirection(Ogre::Vector3(-0.25, -0.5, -1));
     
-    //*/
+    //
 
     //------------------------------------------------------------------------
     //Creando el laberinto

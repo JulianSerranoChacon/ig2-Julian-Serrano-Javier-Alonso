@@ -12,10 +12,6 @@ Mob::~Mob()
 {
 }
 
-void Mob::init()
-{
-}
-
 void Mob::changeDirection(Vector3 newDir)
 {
 	dirNueva = newDir;
@@ -29,17 +25,11 @@ void Mob::walk()
 			dirAct = dirNueva;
 			Quaternion q = getOrientation().getRotationTo(dirNueva);
 			//rotate(q);
+			mNode->rotate(q);
 		}
 	}	
-	//Aquí comprueba si se va a chocar con un muro
-	double margenX = (dirAct.x* CUBE_SIZE)/-2;
-	double margenZ = (dirAct.z * CUBE_SIZE)/-2;	
-	uint _x = (PosX+margenX) / CUBE_SIZE;
-	uint _y = (PosZ+margenZ) / CUBE_SIZE;
-	uint aux = _x + dirAct.x;
-	uint aux2 = _y + dirAct.z;
 	uint frenador = 1;
-	if (!labArray[aux2][aux]) {
+	if (checkWallCollision()) {
 		frenador = 0;
 	}
 
@@ -50,31 +40,36 @@ void Mob::walk()
 
 bool Mob::checkDir()
 {		
-	if (dirAct == dirNueva * -1) return false;
-	else {
-		double margenX = (dirAct.x * CUBE_SIZE) / -2;
-		double margenZ = (dirAct.z * CUBE_SIZE) / -2;
-		uint _x = (PosX + margenX) / CUBE_SIZE;
-		uint _y = (PosZ + margenZ) / CUBE_SIZE;
-		if (dirNueva.x != 0) {
-			uint aux = _x + dirNueva.x;
-			if (labArray[_y][aux]) {
-				return true;
-			}
-			else return false;
-		}
-		else
-		{
-			if (dirNueva.z != 0) {
-				uint aux = _y + dirNueva.z;
-				if (labArray[aux][_x]) {
-					return true;
-				}
-				else return false;
-			}
-			else return false;
-		}
-	}	
+	if (!checkWallCollision() && dirAct == dirNueva * -1)
+		return false;
+
+	double margenX = (dirAct.x * CUBE_SIZE) / -2;
+	double margenZ = (dirAct.z * CUBE_SIZE) / -2;
+	uint _x = (PosX + margenX) / CUBE_SIZE;
+	uint _y = (PosZ + margenZ) / CUBE_SIZE;
+	if (dirNueva.x != 0) {
+		uint aux = _x + dirNueva.x;
+		return labArray[_y][aux];
+	}
+	else if(dirNueva.z != 0) {
+		uint aux = _y + dirNueva.z;
+		return labArray[aux][_x];
+	}
+	else
+		return false;
+}
+
+bool Mob::checkWallCollision()
+{
+	//Aquí comprueba si se va a chocar con un muro
+	double margenX = (dirAct.x * CUBE_SIZE) / -2;
+	double margenZ = (dirAct.z * CUBE_SIZE) / -2;
+	uint _x = (PosX + margenX) / CUBE_SIZE;
+	uint _y = (PosZ + margenZ) / CUBE_SIZE;
+	uint aux = _x + dirAct.x;
+	uint aux2 = _y + dirAct.z;
+
+	return !labArray[aux2][aux];
 }
 
 void Mob::frameRendered(const Ogre::FrameEvent& evt)

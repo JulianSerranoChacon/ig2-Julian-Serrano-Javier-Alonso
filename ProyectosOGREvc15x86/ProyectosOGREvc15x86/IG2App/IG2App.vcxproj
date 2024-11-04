@@ -121,6 +121,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyRandom.h" />
     <ClInclude Include="Heroe.h" />
     <ClInclude Include="Mob.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
@@ -131,6 +133,8 @@
     <ClInclude Include="Perla.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyRandom.cpp" />
     <ClCompile Include="Heroe.cpp" />
     <ClCompile Include="mob.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
