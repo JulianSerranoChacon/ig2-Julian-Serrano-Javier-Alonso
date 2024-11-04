@@ -17,10 +17,12 @@ void EnemySeeker::init()
 
 void EnemySeeker::calculateDirection()
 {
-	Entity* obj = mSM->getEntity("Heroe");
-	hero = (Heroe*)obj;
-	Vector3 hP = hero->getPosition();
-	Vector3 mP = getPosition();
+	if (EstaEnCruce()) {
+		Entity* obj = mSM->getEntity("Heroe");
+		hero = (Heroe*)obj;
+		Vector3 hP = hero->getPosition();
+		Vector3 mP = getPosition();
+	}
 
 	//chooseDir(v);
 }
@@ -34,10 +36,4 @@ void EnemySeeker::frameRendered(const Ogre::FrameEvent& evt)
 Vector3 EnemySeeker::chooseDir(Vector3 v)
 {
 	return Vector3();
-}
-
-bool EnemySeeker::checkCruce()
-{
-
-	return false;
 }
