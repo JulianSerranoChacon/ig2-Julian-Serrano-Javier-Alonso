@@ -6,7 +6,8 @@
 #include <fstream>
 
 
-LaberintoManager::LaberintoManager(IG2App* _app, SceneNode* sn, SceneManager* sm, std::string file) : app(_app), mNode(sn), mSM(sm)
+LaberintoManager::LaberintoManager(IG2App* _app, SceneNode* sn, SceneManager* sm, std::string file) : app(_app), mNode(sn), mSM(sm),
+							materialPerla(DIRECCION_MAT_PERLA), materialMuro(DIRECCION_MAT_MURO), materialSuelo(DIRECCION_MAT_SUELO)
 {
 	app->addInputListener(this);	
 	loadLevelFromFile(file);
@@ -43,7 +44,7 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 													1, 1.0, 1.0, Vector3::UNIT_Z);
 	//Creación del suelo
 	Ogre::Entity* Suel = mSM->createEntity("suelo");	
-	Suel->setMaterialName("Examples/BeachStones");
+	Suel->setMaterialName(materialSuelo);
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
 	nodoSuelo->setPosition((nFils-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nCols-1)*CUBE_SIZE/2);
 	nodoSuelo->setScale(nFils*CUBE_SIZE,0, nCols*CUBE_SIZE);
@@ -71,14 +72,14 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 	case 'x':		
 		labArray[i][j] = false;
 		obj = new Muro(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
-		obj->setMaterialName("Examples/BumpyMetal");
+		obj->setMaterialName(materialMuro);
 		break;
 	case 'o':		
 		labArray[i][j] = true;
 		obj = new Perla(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
 		obj->setScale(Ogre::Vector3(PERLA_SCALE, PERLA_SCALE, PERLA_SCALE));
 		perlas.push_back((Perla*)obj);
-		obj->setMaterialName("Examples/CloudySky");
+		obj->setMaterialName(materialPerla);
 		break;
 	case 'h':
 		labArray[i][j] = true;

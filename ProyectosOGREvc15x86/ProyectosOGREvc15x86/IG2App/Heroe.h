@@ -1,4 +1,5 @@
 #pragma once
+#include <OgreSceneManager.h>
 #include "Mob.h"
 #include "IG2App.h"
 #include "Perla.h"
@@ -19,5 +20,6 @@ private:
 	void updateTextBox();
 	int numPerls;
 	OgreBites::TextBox* mTextBox;
+	Ogre::SceneNode* mLightNode;
 };
 

@@ -25,5 +25,8 @@ private:
 	IG2App* app;
 	std::vector<Perla*> perlas;
 	Heroe* mH;
+	std::string materialPerla;
+	std::string materialMuro;
+	std::string materialSuelo;
 };
 

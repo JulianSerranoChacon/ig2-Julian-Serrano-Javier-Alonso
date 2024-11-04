@@ -1,11 +1,21 @@
 #include "Heroe.h"
 #include <string>
 
+
 Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, uint nlifes, string meshName, bool** arr, IG2App*app):Mob(initPos,node,sceneMng,nlifes,meshName,arr, PLAYER_SPEED)
-{
+{	
 	app->addInputListener(this);
 	mTextBox = app->getTextBox();
 	updateTextBox();
+	
+	Light* luz = mSM->createLight("LuzHeroe");
+	luz->setType(Ogre::Light::LT_SPOTLIGHT);
+	luz->setDiffuseColour(0.75, 0.75, 0.75);
+
+	mLightNode = mNode->createChildSceneNode("nLuzHeroe");			
+	mLightNode->attachObject(luz);	
+	mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
+	mLightNode->setPosition(Ogre::Vector3(0, 80, 0));
 }
 
 void Heroe::init()

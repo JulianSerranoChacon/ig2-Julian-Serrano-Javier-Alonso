@@ -34,7 +34,7 @@ material Examples/CloudySky
 	{
 		pass
 		{
-			lighting off			
+			#lighting off			
 
 			texture_unit
 			{
