@@ -21,5 +21,7 @@ private:
 	int numPerls;
 	OgreBites::TextBox* mTextBox;
 	Ogre::SceneNode* mLightNode;
+	bool invencible;
+	float invencibleTime;
 };
 

@@ -7,6 +7,7 @@ using namespace Ogre;
 class IG2App;
 class Heroe;
 class Perla;
+class Enemy;
 
 class LaberintoManager : public OgreBites::InputListener
 {
@@ -24,6 +25,7 @@ private:
 	bool** labArray;
 	IG2App* app;
 	std::vector<Perla*> perlas;
+	std::vector<Enemy*> enemigos;
 	Heroe* mH;
 	std::string materialPerla;
 	std::string materialMuro;

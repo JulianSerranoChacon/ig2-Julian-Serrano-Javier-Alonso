@@ -11,6 +11,7 @@ const float ENEMY_SPEED = 2.0f;
 const float PERLA_SCALE = 0.1f;
 const float OGRE_SCALE = 10.0f;
 const float PLAYER_SPEED = 3.0f;
+const float INVENCIBLE_TIME = 100.0f;
 
 const std::string DIRECCION_MAT_PERLA = "Examples/CloudySky";
 const std::string DIRECCION_MAT_MURO = "Examples/BumpyMetal";

@@ -1,6 +1,6 @@
 #include "EnemyRandom.h"
 #include <cstdlib>
-#include <fstream>
+//#include <fstream>
 
 EnemyRandom::EnemyRandom(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string meshName, bool** arr, IG2App* app): Enemy(initPos, node, sceneMng, meshName, arr, app)
 {
@@ -53,6 +53,6 @@ Vector3 EnemyRandom::chooseDir()
 		default:
 			break;
 	}
-	cout << v.x << " " << v.z << " " << endl;
+	//cout << v.x << " " << v.z << " " << endl;
 	return v;
 }

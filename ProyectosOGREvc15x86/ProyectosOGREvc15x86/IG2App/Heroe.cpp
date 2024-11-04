@@ -24,6 +24,12 @@ void Heroe::init()
 
 void Heroe::takeDamage()
 {
+	if (!invencible) {
+		numVidas--;
+		updateTextBox();
+		invencible = true;
+		invencibleTime = INVENCIBLE_TIME;
+	}
 }
 
 bool Heroe::keyPressed(const OgreBites::KeyboardEvent& ev)
@@ -50,7 +56,11 @@ bool Heroe::keyPressed(const OgreBites::KeyboardEvent& ev)
 void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 {
 	walk();
-
+	if (invencible) {
+		invencibleTime--;
+		if (invencibleTime <= 0)
+			invencible = false;
+	}
 }
 
 void Heroe::updateTextBox()

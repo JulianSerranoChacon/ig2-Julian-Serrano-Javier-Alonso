@@ -64,6 +64,12 @@ void LaberintoManager::frameRendered(const Ogre::FrameEvent& evt)
 			p->removeEntity();
 		}
 	}
+
+	for (int i = 0; i < enemigos.size(); i++) {
+		if (mH->getAABB().intersects(enemigos[i]->getAABB())) {
+			mH->takeDamage();
+		}
+	}
 }
 
 void LaberintoManager::ReadChar(char c, int i, int j)
@@ -91,6 +97,7 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 	case 'r':
 		labArray[i][j] = true;
 		obj = new EnemyRandom(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE* i), mNode->createChildSceneNode(), mSM, "ogrehead.mesh", labArray, app);
+		enemigos.push_back((Enemy*)obj);
 		break;
 	default:
 		break;
