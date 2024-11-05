@@ -27,8 +27,9 @@ private:
 	std::vector<Perla*> perlas;
 	std::vector<Enemy*> enemigos;
 	Heroe* mH;
-	std::string materialPerla;
-	std::string materialMuro;
-	std::string materialSuelo;
+	std::string matBolas;
+	std::string matMuro;
+	std::string matSuelo;
+	uint luz;
 };
 

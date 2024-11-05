@@ -8,7 +8,7 @@ class Heroe : public Mob
 {
 public:
 	Heroe() {};
-	Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, uint nlifes, string meshName, bool** arr,IG2App*);
+	Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, uint nlifes, string meshName, bool** arr,IG2App*, uint luz);
 	virtual void init();
 	virtual void takeDamage();	
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& ev);
@@ -18,6 +18,7 @@ public:
 
 private:
 	void updateTextBox();
+	void createLight(uint i);
 	int numPerls;
 	OgreBites::TextBox* mTextBox;
 	Ogre::SceneNode* mLightNode;

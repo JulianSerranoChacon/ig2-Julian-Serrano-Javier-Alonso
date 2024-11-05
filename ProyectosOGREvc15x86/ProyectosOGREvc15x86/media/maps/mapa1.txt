@@ -1,5 +1,9 @@
 19
 19
+Examples/CloudySky
+Examples/BumpyMetal
+Examples/BeachStones
+1
 xxxxxxxxxxxxxxxxxxx
 xoooovoooxoooooroox
 xoxxoxxxoxoxxxoxxox

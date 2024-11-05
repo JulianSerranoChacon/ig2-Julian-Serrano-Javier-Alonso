@@ -8,8 +8,7 @@
 #include "EnemySeeker.h"
 
 
-LaberintoManager::LaberintoManager(IG2App* _app, SceneNode* sn, SceneManager* sm, std::string file) : app(_app), mNode(sn), mSM(sm),
-							materialPerla(DIRECCION_MAT_PERLA), materialMuro(DIRECCION_MAT_MURO), materialSuelo(DIRECCION_MAT_SUELO)
+LaberintoManager::LaberintoManager(IG2App* _app, SceneNode* sn, SceneManager* sm, std::string file) : app(_app), mNode(sn), mSM(sm)							
 {
 	app->addInputListener(this);	
 	loadLevelFromFile(file);
@@ -30,6 +29,10 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 	int nCols;
 	reader >> nFils;
 	reader >> nCols;
+	reader >> matBolas;	
+	reader >> matMuro;
+	reader >> matSuelo;
+	reader >> luz;
 	labArray = new bool*[nFils];
 	for (int i = 0; i < nFils; i++) {
 		labArray[i] = new bool[nCols];
@@ -49,7 +52,7 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 													SUBDIVISION_LUZ_PLANO, SUBDIVISION_LUZ_PLANO,true, 1, nFils, nCols, Vector3::UNIT_Z);
 	//Creación del suelo
 	Ogre::Entity* Suel = mSM->createEntity("suelo");	
-	Suel->setMaterialName(materialSuelo);
+	Suel->setMaterialName(matSuelo);
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
 	nodoSuelo->setPosition((nFils-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nCols-1)*CUBE_SIZE/2);
 	nodoSuelo->setScale(nFils*CUBE_SIZE,0, nCols*CUBE_SIZE);
@@ -83,18 +86,18 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 	case 'x':		
 		labArray[i][j] = false;
 		obj = new Muro(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
-		obj->setMaterialName(materialMuro);
+		obj->setMaterialName(matMuro);
 		break;
 	case 'o':		
 		labArray[i][j] = true;
 		obj = new Perla(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
 		obj->setScale(Ogre::Vector3(PERLA_SCALE, PERLA_SCALE, PERLA_SCALE));
 		perlas.push_back((Perla*)obj);
-		obj->setMaterialName(materialPerla);
+		obj->setMaterialName(matBolas);
 		break;
 	case 'h':
 		labArray[i][j] = true;
-		obj = new Heroe(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode("Heroe"), mSM, VIDAS, "Sinbad.mesh", labArray, app);
+		obj = new Heroe(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode("Heroe"), mSM, VIDAS, "Sinbad.mesh", labArray, app, luz);
 		obj->setScale(Ogre::Vector3(OGRE_SCALE, OGRE_SCALE, OGRE_SCALE));
 		mH = (Heroe*)obj;
 		break;
