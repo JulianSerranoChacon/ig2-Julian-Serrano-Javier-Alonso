@@ -108,7 +108,7 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 		break;
 	case 'v':
 		labArray[i][j] = true;
-		obj = new EnemySeeker(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM, "ogrehead.mesh", labArray, app);
+		obj = new EnemySeeker(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM, "RZR-002.mesh", labArray, app);
 		enemigos.push_back((Enemy*)obj);
 		break;
 	default:
