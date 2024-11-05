@@ -6,6 +6,7 @@ const uint CUBE_SIZE = 98;
 const uint VIDAS = 3;
 const uint PUNTOS_POR_PERLA = 10;
 const uint ENEMY_LIFES = 1;
+const uint SUBDIVISION_LUZ_PLANO = 150;
 
 const float ENEMY_SPEED = 2.0f;
 const float PERLA_SCALE = 0.1f;

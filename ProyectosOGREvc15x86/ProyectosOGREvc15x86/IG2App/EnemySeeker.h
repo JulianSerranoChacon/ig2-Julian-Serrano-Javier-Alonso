@@ -10,9 +10,10 @@ public:
 	virtual void init();
 	virtual void takeDamage() {};
 	virtual void calculateDirection();
+	virtual void addHeroe(Heroe* h) { hero = h; };
 	void frameRendered(const Ogre::FrameEvent& evt);
 private:
-	Vector3 chooseDir(Vector3 v);
+	Vector3 chooseDir();
 	Heroe* hero;
 };
 

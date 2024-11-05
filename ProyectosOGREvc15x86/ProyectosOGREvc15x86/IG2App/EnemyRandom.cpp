@@ -16,9 +16,9 @@ void EnemyRandom::init()
 }
 
 void EnemyRandom::calculateDirection()
-{
-	if (checkWallCollision() || EstaEnCruce()) {
-		dirNueva = chooseDir();
+{	
+	if (!(checkWallCollision(dirAct) ||  EstaEnCruce() || dirAct == Vector3(0, 0, 0))) {
+		dirNueva = chooseDir();		
 	}
 }
 
@@ -29,7 +29,21 @@ void EnemyRandom::frameRendered(const Ogre::FrameEvent& evt)
 }
 
 Vector3 EnemyRandom::chooseDir()
-{
+{	
+	std::vector<Vector3> v = getDirections();
+	if (v.size() <= 1) {		
+		 return v[0];
+	}
+	else {
+		int r1 = rand() % v.size();
+		if (v[r1] == dirAct * -1) {
+			return chooseDir();
+		}
+		else {
+			return v[r1];
+		}
+	}
+	/*
 	int r1 = rand() % 2;
 	int r2 = rand() % 2;
 
@@ -53,6 +67,6 @@ Vector3 EnemyRandom::chooseDir()
 		default:
 			break;
 	}
-	//cout << v.x << " " << v.z << " " << endl;
 	return v;
+	*/
 }

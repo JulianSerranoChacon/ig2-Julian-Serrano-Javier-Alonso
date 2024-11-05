@@ -31,12 +31,14 @@ bool Enemy::EstaEnCruce()
 {	
 	double margenX = (dirAct.x * CUBE_SIZE) / -2;
 	double margenZ = (dirAct.z * CUBE_SIZE) / -2;
-	uint _x = (PosX + margenX) / CUBE_SIZE;
-	uint _y = (PosZ + margenZ) / CUBE_SIZE;
-	if (_x != cruceX && _y != cruceY) {
+	uint _x = (PosX  + margenX) / CUBE_SIZE;
+	uint _y = (PosZ  + margenZ  ) / CUBE_SIZE;
+	if (_x != cruceX || _y != cruceY) {		
 		cruceX = _x;
-		cruceY = _y;
-		return (labArray[_x][_y + 1] || labArray[_x][_y - 1]) && (labArray[_x + 1][_y] || labArray[_x - 1][_y]);
+		cruceY = _y;						
+		return (!checkWallCollision(Vector3(0,0,1))|| !checkWallCollision(Vector3(0, 0, -1))) &&
+			(!checkWallCollision(Vector3(1, 0, 0)) || !checkWallCollision(Vector3(-1, 0, 0)));
+		//return (labArray[_x][_y + 1] || labArray[_x][_y - 1]) && (labArray[_x + 1][_y] || labArray[_x - 1][_y]);
 	}
 	else return false;
 }

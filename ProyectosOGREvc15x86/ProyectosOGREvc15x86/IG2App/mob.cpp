@@ -29,7 +29,7 @@ void Mob::walk()
 		}
 	}	
 	uint frenador = 1;
-	if (checkWallCollision()) {
+	if (checkWallCollision(dirAct)) {
 		frenador = 0;
 	}
 
@@ -40,7 +40,7 @@ void Mob::walk()
 
 bool Mob::checkDir()
 {		
-	if (!checkWallCollision() && dirAct == dirNueva * -1)
+	if (!checkWallCollision(dirAct) && dirAct == dirNueva * -1)
 		return false;
 
 	double margenX = (dirAct.x * CUBE_SIZE) / -2;
@@ -59,15 +59,15 @@ bool Mob::checkDir()
 		return false;
 }
 
-bool Mob::checkWallCollision()
+bool Mob::checkWallCollision(Vector3 v)
 {
 	//Aquí comprueba si se va a chocar con un muro
-	double margenX = (dirAct.x * CUBE_SIZE) / -2;
-	double margenZ = (dirAct.z * CUBE_SIZE) / -2;
+	double margenX = (v.x * CUBE_SIZE) / -2;
+	double margenZ = (v.z * CUBE_SIZE) / -2;
 	uint _x = (PosX + margenX) / CUBE_SIZE;
 	uint _y = (PosZ + margenZ) / CUBE_SIZE;
-	uint aux = _x + dirAct.x;
-	uint aux2 = _y + dirAct.z;
+	uint aux = _x + v.x;
+	uint aux2 = _y + v.z;
 
 	return !labArray[aux2][aux];
 }
@@ -75,4 +75,15 @@ bool Mob::checkWallCollision()
 void Mob::frameRendered(const Ogre::FrameEvent& evt)
 {
 	walk();
+}
+
+std::vector<Vector3> Mob::getDirections()
+{
+	std::vector<Vector3> v;
+	if (!checkWallCollision(Vector3(1, 0, 0))) v.push_back(Vector3(1, 0, 0));
+	if (!checkWallCollision(Vector3(-1, 0, 0))) v.push_back(Vector3(-1, 0, 0));
+	if (!checkWallCollision(Vector3(0, 0, 1))) v.push_back(Vector3(0, 0, 1));
+	if (!checkWallCollision(Vector3(0, 0, -1))) v.push_back(Vector3(0, 0, -1));
+
+	return v;
 }

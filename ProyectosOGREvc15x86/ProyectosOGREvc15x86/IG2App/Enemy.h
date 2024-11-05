@@ -1,6 +1,7 @@
 #pragma once
 #include "Mob.h"
 #include "IG2App.h"
+#include "Heroe.h"
 class Enemy: public Mob
 {
 public:
@@ -10,7 +11,8 @@ public:
 	virtual void takeDamage() {};
 	virtual void calculateDirection();
 	void frameRendered(const Ogre::FrameEvent& evt) = 0;
-	bool EstaEnCruce();
+	bool EstaEnCruce();		
+	virtual void addHeroe(Heroe*) {};
 
 protected:
 

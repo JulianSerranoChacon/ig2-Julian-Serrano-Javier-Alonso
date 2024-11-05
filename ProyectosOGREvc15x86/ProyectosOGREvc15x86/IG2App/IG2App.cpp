@@ -81,16 +81,17 @@ void IG2App::setupScene(void) {
     
 
     //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+    
     Light* luz = mSM->createLight("Luz");
     luz->setType(Ogre::Light::LT_DIRECTIONAL);
-    luz->setDiffuseColour(0.15, 0.15, 0.15);
+    luz->setDiffuseColour(0.815, 0.815, 0.815);
 
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     //mLightNode = mCamNode->createChildSceneNode("nLuz");
     mLightNode->attachObject(luz);
     mLightNode->setDirection(Ogre::Vector3(-0.25, -0.5, -1));
     
-    //
+    // 
 
     //------------------------------------------------------------------------
     //Creando el laberinto

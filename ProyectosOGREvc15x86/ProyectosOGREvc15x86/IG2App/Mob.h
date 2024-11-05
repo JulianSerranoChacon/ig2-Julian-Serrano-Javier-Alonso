@@ -14,8 +14,9 @@ public:
 	virtual void changeDirection(Vector3 newDir);
 	virtual void walk();
 	virtual bool checkDir();
-	virtual bool checkWallCollision();
+	virtual bool checkWallCollision(Vector3);
 	void frameRendered(const Ogre::FrameEvent& evt);
+	std::vector<Vector3> getDirections();
 protected:
 	float speed;
 	uint numVidas;

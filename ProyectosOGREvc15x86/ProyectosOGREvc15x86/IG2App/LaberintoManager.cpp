@@ -5,6 +5,7 @@
 #include "Config.h"
 #include <fstream>
 #include "EnemyRandom.h"
+#include "EnemySeeker.h"
 
 
 LaberintoManager::LaberintoManager(IG2App* _app, SceneNode* sn, SceneManager* sm, std::string file) : app(_app), mNode(sn), mSM(sm),
@@ -40,9 +41,12 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 			ReadChar(c, i, j);
 		}
 	}
+	for (int i = 0; i < enemigos.size(); i++) {
+		enemigos[i]->addHeroe(mH);
+	}
 	reader.close();
-	Ogre::MeshManager::getSingleton().createPlane("suelo", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Plane(Vector3::UNIT_Y, 0), 1,1,1,1,true,
-													1, 1.0, 1.0, Vector3::UNIT_Z);
+	Ogre::MeshManager::getSingleton().createPlane("suelo", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Plane(Vector3::UNIT_Y, 0), 1,1, 
+													SUBDIVISION_LUZ_PLANO, SUBDIVISION_LUZ_PLANO,true, 1, nFils, nCols, Vector3::UNIT_Z);
 	//Creación del suelo
 	Ogre::Entity* Suel = mSM->createEntity("suelo");	
 	Suel->setMaterialName(materialSuelo);
@@ -97,6 +101,11 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 	case 'r':
 		labArray[i][j] = true;
 		obj = new EnemyRandom(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE* i), mNode->createChildSceneNode(), mSM, "ogrehead.mesh", labArray, app);
+		enemigos.push_back((Enemy*)obj);
+		break;
+	case 'v':
+		labArray[i][j] = true;
+		obj = new EnemySeeker(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM, "ogrehead.mesh", labArray, app);
 		enemigos.push_back((Enemy*)obj);
 		break;
 	default:
