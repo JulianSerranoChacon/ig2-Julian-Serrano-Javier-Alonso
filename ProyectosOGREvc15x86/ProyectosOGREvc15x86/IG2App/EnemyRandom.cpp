@@ -17,7 +17,7 @@ void EnemyRandom::init()
 
 void EnemyRandom::calculateDirection()
 {	
-	if (!(checkWallCollision(dirAct) ||  EstaEnCruce() || dirAct == Vector3(0, 0, 0))) {
+	if (checkWallCollision(dirAct) ||  EstaEnCruce() || dirAct == Vector3(0, 0, 0)) {
 		dirNueva = chooseDir();		
 	}
 }
