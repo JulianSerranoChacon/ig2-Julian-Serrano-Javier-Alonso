@@ -26,7 +26,7 @@ void EnemySeeker::calculateDirection()
 void EnemySeeker::frameRendered(const Ogre::FrameEvent& evt)
 {
 	calculateDirection();
-	walk();
+	walk(false);
 	rotador->rotate(Quaternion(Ogre::Radian(rotationSpeed), Vector3(0, rotDir, 0)));
 	if (timer->getMilliseconds() >= 5000) {
 		timer->reset();

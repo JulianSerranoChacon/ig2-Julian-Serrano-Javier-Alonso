@@ -47,7 +47,7 @@ bool Heroe::keyPressed(const OgreBites::KeyboardEvent& ev)
 
 void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 {
-	walk();
+	walk(true);
 	if (invencible) {
 		invencibleTime--;
 		if (invencibleTime <= 0)

@@ -17,11 +17,11 @@ void Mob::changeDirection(Vector3 newDir)
 	dirNueva = newDir;
 }
 
-void Mob::walk()
+void Mob::walk(bool heroe)
 {	
 	//Aquí comprueba si hay que hacer algún cambio de dirección
 	if (dirAct != dirNueva) {
-		if (checkDir()) {
+		if (checkDir(heroe)) {
 			dirAct = dirNueva;
 			Quaternion q = getOrientation().getRotationTo(dirNueva);
 			//rotate(q);
@@ -38,10 +38,10 @@ void Mob::walk()
 	PosZ += dirAct.z*speed*frenador;
 }
 
-bool Mob::checkDir()
+bool Mob::checkDir(bool heroe)
 {		
 	if (!checkWallCollision(dirAct) && dirAct == dirNueva * -1)
-		return false;
+		return heroe;
 
 	double margenX = (dirAct.x * CUBE_SIZE) / -2;
 	double margenZ = (dirAct.z * CUBE_SIZE) / -2;
@@ -73,17 +73,18 @@ bool Mob::checkWallCollision(Vector3 v)
 }
 
 void Mob::frameRendered(const Ogre::FrameEvent& evt)
-{
-	walk();
+{	
 }
 
 std::vector<Vector3> Mob::getDirections()
 {
 	std::vector<Vector3> v;
-	if (!checkWallCollision(Vector3(1, 0, 0))) v.push_back(Vector3(1, 0, 0));
-	if (!checkWallCollision(Vector3(-1, 0, 0))) v.push_back(Vector3(-1, 0, 0));
-	if (!checkWallCollision(Vector3(0, 0, 1))) v.push_back(Vector3(0, 0, 1));
-	if (!checkWallCollision(Vector3(0, 0, -1))) v.push_back(Vector3(0, 0, -1));
+	Vector3 masAtrás = dirAct*-1;
+	if (Vector3(1, 0, 0) != masAtrás &&!checkWallCollision(Vector3(1, 0, 0))) v.push_back(Vector3(1, 0, 0));
+	if (Vector3(-1, 0, 0) != masAtrás && !checkWallCollision(Vector3(-1, 0, 0))) v.push_back(Vector3(-1, 0, 0));
+	if (Vector3(0, 0, 1) != masAtrás && !checkWallCollision(Vector3(0, 0, 1))) v.push_back(Vector3(0, 0, 1));
+	if (Vector3(0, 0, -1) != masAtrás && !checkWallCollision(Vector3(0, 0, -1))) v.push_back(Vector3(0, 0, -1));
 
+	//v.push_back(masAtrás);
 	return v;
 }
