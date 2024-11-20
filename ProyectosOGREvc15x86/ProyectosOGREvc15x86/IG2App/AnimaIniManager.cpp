@@ -12,10 +12,10 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	mSinbadNode->setScale(Vector3(OGRE_SCALE_ANIM, OGRE_SCALE_ANIM, OGRE_SCALE_ANIM));
 	entities.push_back(ent);
 
-	Ogre::MeshManager::getSingleton().createPlane("suelo", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Plane(Vector3::UNIT_Y, 0), 1, 1,
+	Ogre::MeshManager::getSingleton().createPlane("sueloAnim", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Plane(Vector3::UNIT_Y, 0), 1, 1,
 		SUBDIVISION_LUZ_PLANO, SUBDIVISION_LUZ_PLANO, true, 1, 20, 20, Vector3::UNIT_Z);
 	//Creación del suelo
-	Ogre::Entity* Suel = mSM->createEntity("suelo");
+	Ogre::Entity* Suel = mSM->createEntity("sueloAnim");
 	Suel->setMaterialName(DIR_MAT_SUELO_ANIM);
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
 
@@ -49,7 +49,7 @@ AnimaIniManager::~AnimaIniManager()
 }
 
 void AnimaIniManager::clear()
-{
+{	
 	for (int i = 0; i < entities.size(); i++) {
 		if (entities[i] != nullptr) {
 			mSM->destroyEntity(entities[i]);
