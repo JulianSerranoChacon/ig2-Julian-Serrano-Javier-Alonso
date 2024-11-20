@@ -120,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AnimaIniManager.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyRandom.h" />
@@ -134,6 +135,7 @@
     <ClInclude Include="Perla.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnimaIniManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyRandom.cpp" />
     <ClCompile Include="EnemySeeker.cpp" />

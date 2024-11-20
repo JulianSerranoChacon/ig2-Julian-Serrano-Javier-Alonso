@@ -17,6 +17,20 @@ LaberintoManager::LaberintoManager(IG2App* _app, SceneNode* sn, SceneManager* sm
 
 LaberintoManager::~LaberintoManager()
 {
+	for (int i = 0; i < perlas.size(); i++) {
+		if (perlas[i] != nullptr) perlas[i]->removeEntity();
+	}
+	for (int i = 0; i < enemigos.size(); i++) {
+		if (enemigos[i] != nullptr) enemigos[i]->removeEntity();
+	}
+	for (int i = 0; i < muros.size(); i++) {
+		if (muros[i] != nullptr) muros[i]->removeEntity();
+	}
+	if (Suel != nullptr) {
+		mSM->destroyEntity(Suel);
+		Suel = nullptr;
+	}
+	mH->removeEntity();
 }
 
 void LaberintoManager::loadLevelFromFile(std::string str)
@@ -51,7 +65,7 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 	Ogre::MeshManager::getSingleton().createPlane("suelo", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Plane(Vector3::UNIT_Y, 0), 1,1, 
 													SUBDIVISION_LUZ_PLANO, SUBDIVISION_LUZ_PLANO,true, 1, nFils, nCols, Vector3::UNIT_Z);
 	//Creación del suelo
-	Ogre::Entity* Suel = mSM->createEntity("suelo");	
+	Suel = mSM->createEntity("suelo");	
 	Suel->setMaterialName(matSuelo);
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
 	nodoSuelo->setPosition((nFils-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nCols-1)*CUBE_SIZE/2);
@@ -87,6 +101,7 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 		labArray[i][j] = false;
 		obj = new Muro(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
 		obj->setMaterialName(matMuro);
+		muros.push_back((Muro*)obj);
 		break;
 	case 'o':		
 		labArray[i][j] = true;

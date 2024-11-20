@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include "LaberintoManager.h"
+#include "AnimaIniManager.h"
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
 
@@ -43,6 +44,7 @@ protected:
     
 
     LaberintoManager* mLab;
+    AnimaIniManager* mAni;
     OgreBites::TextBox* mTextBox;
 };
 

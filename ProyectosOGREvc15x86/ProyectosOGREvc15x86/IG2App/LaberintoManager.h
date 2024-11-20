@@ -8,6 +8,7 @@ class IG2App;
 class Heroe;
 class Perla;
 class Enemy;
+class Muro;
 
 class LaberintoManager : public OgreBites::InputListener
 {
@@ -18,6 +19,7 @@ public:
 	void loadLevelFromFile(std::string file);
 	void frameRendered(const Ogre::FrameEvent& evt);
 private:
+	Ogre::Entity* Suel;
 	Ogre::SceneNode* mNode;
 	Ogre::SceneManager* mSM;
 	void ReadChar(char c, int i, int j);
@@ -26,6 +28,7 @@ private:
 	IG2App* app;
 	std::vector<Perla*> perlas;
 	std::vector<Enemy*> enemigos;
+	std::vector<Muro*> muros;
 	Heroe* mH;
 	std::string matBolas;
 	std::string matMuro;

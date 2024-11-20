@@ -9,6 +9,10 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
     if (evt.keysym.sym == SDLK_ESCAPE) {
         getRoot()->queueEndRendering();
     }
+    if (evt.keysym.sym == SDLK_s) {
+        if(mAni != nullptr) mAni->clear();
+        mLab = new LaberintoManager(this, mSM->getRootSceneNode()->createChildSceneNode("Laberinto"), mSM, "mapa1.txt");
+    }
 
     return true;
 }
@@ -91,11 +95,13 @@ void IG2App::setupScene(void) {
     mLightNode->attachObject(luz);
     mLightNode->setDirection(Ogre::Vector3(-0.25, -0.5, -1));
     
-    // 
+    //Creando animacion inicial
+    mAni = new AnimaIniManager(this, mSM->getRootSceneNode()->createChildSceneNode("AnimacionInicial"), mSM);
+
 
     //------------------------------------------------------------------------
     //Creando el laberinto
-    mLab = new LaberintoManager(this, mSM->getRootSceneNode()->createChildSceneNode("Laberinto"), mSM, "mapa1.txt");
+    //mLab = new LaberintoManager(this, mSM->getRootSceneNode()->createChildSceneNode("Laberinto"), mSM, "mapa1.txt");
 
     //------------------------------------------------------------------------
     // Creating Sinbad
