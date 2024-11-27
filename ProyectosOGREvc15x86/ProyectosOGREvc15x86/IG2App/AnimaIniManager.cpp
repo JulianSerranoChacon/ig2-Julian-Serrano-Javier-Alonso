@@ -7,7 +7,7 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 {
 	app->addInputListener(this);
 	Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
-	SceneNode* mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("SinbadAnim");
+	mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("SinbadAnim");
 	mSinbadNode->attachObject(ent);
 	mSinbadNode->setScale(Vector3(OGRE_SCALE_ANIM, OGRE_SCALE_ANIM, OGRE_SCALE_ANIM));
 	entities.push_back(ent);
@@ -41,6 +41,15 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	nodoSuelo->attachObject(Suel);
 
 	entities.push_back(Suel);
+
+	_dance = ent->getAnimationState("Dance");
+	_runTop = ent->getAnimationState("RunTop");
+	_runBottom = ent->getAnimationState("RunBase");
+	_dance->setLoop(true);
+	_runTop->setLoop(true);
+	_runBottom->setLoop(true);	
+
+	Animate();
 }
 
 AnimaIniManager::~AnimaIniManager()
@@ -56,4 +65,22 @@ void AnimaIniManager::clear()
 			entities[i] = nullptr;
 		}
 	}
+}
+
+void AnimaIniManager::frameRendered(const Ogre::FrameEvent& evt)
+{
+	_dance->addTime(evt.timeSinceLastFrame);
+}
+
+void AnimaIniManager::Animate()
+{
+	_anim = mSM->createAnimation("AnimSinbad", ANIM_DURATION);
+	_anim->setInterpolationMode(Ogre::Animation::IM_SPLINE);
+	NodeAnimationTrack* track = _anim->createNodeTrack(0);	
+	track->setAssociatedNode(mSinbadNode);
+	
+
+
+	_dance->setTimePosition(0);
+	_dance->setEnabled(true);			
 }

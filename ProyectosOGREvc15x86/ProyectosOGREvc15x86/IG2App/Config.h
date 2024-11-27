@@ -18,6 +18,7 @@ const float OGRE_SCALE_ANIM = 25.0f;
 const float SUELO_SCALE_ANIM = 7000.0f;
 const float SUELO_BAJAR_ANIM = -2.0f;
 const std::string DIR_MAT_SUELO_ANIM = "Examples/BeachStones";
+const float ANIM_DURATION = 100.0f;
 
 const std::string DIRECCION_MAT_PERLA = "Examples/CloudySky";
 const std::string DIRECCION_MAT_MURO = "Examples/BumpyMetal";
