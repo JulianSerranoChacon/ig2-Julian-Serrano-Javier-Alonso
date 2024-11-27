@@ -18,7 +18,14 @@ const float OGRE_SCALE_ANIM = 25.0f;
 const float SUELO_SCALE_ANIM = 7000.0f;
 const float SUELO_BAJAR_ANIM = -2.0f;
 const std::string DIR_MAT_SUELO_ANIM = "Examples/BeachStones";
-const float ANIM_DURATION = 100.0f;
+const float ANIM_DURATION = 21.0f;
+const float STOP_DANCING = 4.0f;
+const float SPIN = 10.0f;
+const float SECOND_SPIN = 15.0f;
+const float TIME_FOR_SPIN = 1.0f;
+const float TIEMPO_BAILE = 4000.0f;
+const float TIEMPO_MAX = 21000.0f;
+const float MUESTRA_ESPADAS = 10000.0f;
 
 const std::string DIRECCION_MAT_PERLA = "Examples/CloudySky";
 const std::string DIRECCION_MAT_MURO = "Examples/BumpyMetal";

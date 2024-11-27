@@ -3,6 +3,8 @@
 #include "IG2ApplicationContext.h"
 #include "OgreAnimation.h"
 #include <vector>
+#include "OgreTimer.h"
+
 using namespace Ogre;
 class IG2App;
 
@@ -20,11 +22,24 @@ private:
 	Ogre::SceneManager* mSM;
 	std::vector<Entity*> entities;
 	SceneNode* mSinbadNode;
+	Ogre::Entity* sinbad;
+	Ogre::Entity* espadadDer;
+	Ogre::Entity* espadadIz;
+
+	bool Bailando;
+	bool Corriendo;
 
 	AnimationState* _dance;
 	AnimationState* _runTop;
 	AnimationState* _runBottom;
+	AnimationState* _movement;
 
+	Ogre::Timer* _timer;
 	Animation* _anim;
+
+	Vector3 iniPos = Vector3(0,0,0);
+	Vector3 SecondPos = Vector3(500,0,0);
+	Vector3 ThirdPos = Vector3(-500,0,0);
+
 };
 
