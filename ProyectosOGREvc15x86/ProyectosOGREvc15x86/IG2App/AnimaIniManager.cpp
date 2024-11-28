@@ -44,11 +44,18 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	else
 		result = { 0,0,0 };
 
+	nodoSuelo->attachObject(Suel);
 	nodoSuelo->setPosition(0, result.y * -0.56 , 0);
 	nodoSuelo->setScale(SUELO_SCALE_ANIM,0, SUELO_SCALE_ANIM);
-	nodoSuelo->attachObject(Suel);
 
 	entities.push_back(Suel);
+
+	ogreHead = mSM->createEntity("ogrehead.mesh");
+	mOgreHeadNode = mSM->getRootSceneNode()->createChildSceneNode();
+	mOgreHeadNode->attachObject(ogreHead);
+	mOgreHeadNode->setScale(Vector3(5, 5, 5));
+	entities.push_back(ogreHead);
+
 
 	_dance = sinbad->getAnimationState("Dance");
 	_runTop = sinbad->getAnimationState("RunTop");
@@ -128,6 +135,8 @@ void AnimaIniManager::Animate()
 	_anim->setInterpolationMode(Ogre::Animation::IM_SPLINE);
 	NodeAnimationTrack* track = _anim->createNodeTrack(0);	
 	track->setAssociatedNode(mSinbadNode);
+	NodeAnimationTrack* trackHead = _anim->createNodeTrack(1);
+	trackHead->setAssociatedNode(mOgreHeadNode);
 	TransformKeyFrame* kf;
 
 	kf = track->createNodeKeyFrame(STOP_DANCING);
@@ -135,9 +144,19 @@ void AnimaIniManager::Animate()
 	kf->setScale(Vector3(OGRE_SCALE_ANIM, OGRE_SCALE_ANIM, OGRE_SCALE_ANIM));
 	kf->setRotation(Quaternion(Degree(0.0), Vector3(0, 1, 0)));
 
+	kf = trackHead->createNodeKeyFrame(STOP_DANCING);
+	kf->setTranslate(iniPos + headOffset);
+	kf->setScale(Vector3(0, 0, 0));
+	kf->setRotation(Quaternion(Degree(90.0), Vector3(0, 1, 0)));
+
 	kf = track->createNodeKeyFrame(STOP_DANCING + TIME_FOR_SPIN);
 	kf->setTranslate(iniPos);
 	kf->setScale(Vector3(OGRE_SCALE_ANIM, OGRE_SCALE_ANIM, OGRE_SCALE_ANIM));
+	kf->setRotation(Quaternion(Degree(90.0), Vector3(0, 1, 0)));
+
+	kf = trackHead->createNodeKeyFrame(STOP_DANCING + TIME_FOR_SPIN);
+	kf->setTranslate(iniPos + headOffset);
+	kf->setScale(Vector3(5, 5, 5));
 	kf->setRotation(Quaternion(Degree(90.0), Vector3(0, 1, 0)));
 
 	kf = track->createNodeKeyFrame(SPIN);
@@ -145,14 +164,30 @@ void AnimaIniManager::Animate()
 	kf->setScale(Vector3(OGRE_SCALE_ANIM, OGRE_SCALE_ANIM, OGRE_SCALE_ANIM));
 	kf->setRotation(Quaternion(Degree(90.0), Vector3(0, 1, 0)));
 
+	kf = trackHead->createNodeKeyFrame(SPIN);
+	kf->setTranslate(SecondPos + headOffset);
+	kf->setScale(Vector3(5, 5, 5));
+	kf->setRotation(Quaternion(Degree(90.0), Vector3(0, 1, 0)));
+
 	kf = track->createNodeKeyFrame(SPIN + TIME_FOR_SPIN);
 	kf->setTranslate(SecondPos);
 	kf->setScale(Vector3(OGRE_SCALE_ANIM, OGRE_SCALE_ANIM, OGRE_SCALE_ANIM));
 	kf->setRotation(Quaternion(Degree(-90.0), Vector3(0, 1, 0)));
 
+	kf = trackHead->createNodeKeyFrame(SPIN + TIME_FOR_SPIN);
+	kf->setTranslate(SecondPos + headOffset);
+	kf->setScale(Vector3(5, 5, 5));
+	kf->setRotation(Quaternion(Degree(-90.0), Vector3(0, 1, 0)));
+
+
 	kf = track->createNodeKeyFrame(SECOND_SPIN);
 	kf->setTranslate(ThirdPos);
 	kf->setScale(Vector3(OGRE_SCALE_ANIM, OGRE_SCALE_ANIM, OGRE_SCALE_ANIM));
+	kf->setRotation(Quaternion(Degree(-90.0), Vector3(0, 1, 0)));
+
+	kf = trackHead->createNodeKeyFrame(SECOND_SPIN);
+	kf->setTranslate(ThirdPos + headOffset);
+	kf->setScale(Vector3(5, 5, 5));
 	kf->setRotation(Quaternion(Degree(-90.0), Vector3(0, 1, 0)));
 
 	kf = track->createNodeKeyFrame(SECOND_SPIN + TIME_FOR_SPIN);
@@ -160,9 +195,20 @@ void AnimaIniManager::Animate()
 	kf->setScale(Vector3(OGRE_SCALE_ANIM, OGRE_SCALE_ANIM, OGRE_SCALE_ANIM));
 	kf->setRotation(Quaternion(Degree(90.0), Vector3(0, 1, 0)));
 
+	kf = trackHead->createNodeKeyFrame(SECOND_SPIN + TIME_FOR_SPIN);
+	kf->setTranslate(ThirdPos + headOffset);
+	kf->setScale(Vector3(5, 5, 5));
+	kf->setRotation(Quaternion(Degree(90.0), Vector3(0, 1, 0)));
+
+
 	kf = track->createNodeKeyFrame(ANIM_DURATION- TIME_FOR_SPIN);
 	kf->setTranslate(iniPos);
 	kf->setScale(Vector3(OGRE_SCALE_ANIM, OGRE_SCALE_ANIM, OGRE_SCALE_ANIM));
+	kf->setRotation(Quaternion(Degree(90.0), Vector3(0, 1, 0)));
+
+	kf = trackHead->createNodeKeyFrame(ANIM_DURATION - TIME_FOR_SPIN);
+	kf->setTranslate(iniPos + headOffset);
+	kf->setScale(Vector3(0, 0, 0));
 	kf->setRotation(Quaternion(Degree(90.0), Vector3(0, 1, 0)));
 
 	kf = track->createNodeKeyFrame(ANIM_DURATION);

@@ -27,6 +27,10 @@ private:
 	Ogre::Entity* espadadDer;
 	Ogre::Entity* espadadIz;
 
+
+	Ogre::SceneNode* mOgreHeadNode;
+	Ogre::Entity* ogreHead;
+
 	bool Bailando;
 	bool Corriendo;
 
@@ -41,6 +45,8 @@ private:
 	Vector3 iniPos = Vector3(0,0,0);
 	Vector3 SecondPos = Vector3(500,0,0);
 	Vector3 ThirdPos = Vector3(-500,0,0);
+
+	Vector3 headOffset = Vector3(-350, 0, 0);
 
 	//Para dejar de ejecutr el IniAnimatedScene
 	bool _update;
