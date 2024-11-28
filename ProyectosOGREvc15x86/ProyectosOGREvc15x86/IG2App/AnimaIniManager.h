@@ -12,9 +12,10 @@ class AnimaIniManager : public OgreBites::InputListener
 {
 public:
 	AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm);
-	~AnimaIniManager();
+	virtual ~AnimaIniManager();
 	void clear();
 	void frameRendered(const Ogre::FrameEvent& evt);
+	void setRun(bool update = false) {_update = update;}
 private:
 	void Animate();
 	IG2App* app;
@@ -41,5 +42,7 @@ private:
 	Vector3 SecondPos = Vector3(500,0,0);
 	Vector3 ThirdPos = Vector3(-500,0,0);
 
+	//Para dejar de ejecutr el IniAnimatedScene
+	bool _update;
 };
 

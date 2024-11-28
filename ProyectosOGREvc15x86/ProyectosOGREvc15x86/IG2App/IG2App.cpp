@@ -10,7 +10,12 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
         getRoot()->queueEndRendering();
     }
     if (evt.keysym.sym == SDLK_s) {
-        if(mAni != nullptr) mAni->clear();
+        if (mAni != nullptr) {
+            mAni->clear();
+            mAni->setRun(false);
+        }
+
+        mAni = nullptr;
         mLab = new LaberintoManager(this, mSM->getRootSceneNode()->createChildSceneNode("Laberinto"), mSM, "mapa1.txt");
     }
 
@@ -93,7 +98,7 @@ void IG2App::setupScene(void) {
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     //mLightNode = mCamNode->createChildSceneNode("nLuz");
     mLightNode->attachObject(luz);
-    mLightNode->setDirection(Ogre::Vector3(-0.25, -0.5, -1));
+    mLightNode->setDirection(Ogre::Vector3(-25, 5, -100));
     
     //Creando animacion inicial
     mAni = new AnimaIniManager(this, mSM->getRootSceneNode()->createChildSceneNode("AnimacionInicial"), mSM);

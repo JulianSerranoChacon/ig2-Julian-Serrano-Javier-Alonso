@@ -5,7 +5,7 @@
 
 using namespace Ogre;
 
-AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) : app(_app), mNode(sn), mSM(sm), Bailando(false), Corriendo(false)
+AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) : app(_app), mNode(sn), mSM(sm), Bailando(false), Corriendo(false), _update(true)
 {
 	app->addInputListener(this);
 	sinbad = mSM->createEntity("Sinbad.mesh");
@@ -25,6 +25,7 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	Ogre::Entity* Suel = mSM->createEntity("sueloAnim");
 	Suel->setMaterialName(DIR_MAT_SUELO_ANIM);
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
+	//Ogre::SceneNode* nodoSuelo = mSM->getRootSceneNode()->createChildSceneNode("SueloAnim");
 
 	Vector3 result;
 
@@ -56,7 +57,6 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	_runTop->setLoop(true);
 	_runBottom->setLoop(true);		
 
-
 	Animate();
 }
 
@@ -73,10 +73,14 @@ void AnimaIniManager::clear()
 			entities[i] = nullptr;
 		}
 	}
+	//sinbad->getAllAnimationStates()->removeAllAnimationStates();
 }
 
 void AnimaIniManager::frameRendered(const Ogre::FrameEvent& evt)
 {		
+	if (!_update)
+		return;
+
 	_movement->addTime(evt.timeSinceLastFrame);
 	if (_timer->getMilliseconds() < TIEMPO_BAILE) {
 		_dance->addTime(evt.timeSinceLastFrame);
