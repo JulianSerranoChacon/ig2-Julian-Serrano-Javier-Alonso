@@ -66,7 +66,7 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 													SUBDIVISION_LUZ_PLANO, SUBDIVISION_LUZ_PLANO,true, 1, nFils, nCols, Vector3::UNIT_Z);
 	//Creación del suelo
 	Suel = mSM->createEntity("suelo");	
-	//Suel->setMaterialName(matSuelo);
+	Suel->setMaterialName(matSuelo);
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
 	nodoSuelo->setPosition((nFils-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nCols-1)*CUBE_SIZE/2);
 	nodoSuelo->setScale(nFils*CUBE_SIZE,0, nCols*CUBE_SIZE);
