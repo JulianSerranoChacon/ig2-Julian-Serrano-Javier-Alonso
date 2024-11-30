@@ -1,0 +1,32 @@
+particle_system Particulas/HumoOgreHead
+{
+
+    billboard_type point
+    particle_width 35
+    particle_height 35
+    quota 500
+    material Examples/Smoke
+    emitter Point
+    {
+        // Configuración del emisor
+        angle           25
+        emission_rate   45
+        time_to_live    2
+        direction       0 0 -1
+        velocity_min    30
+        velocity_max    70        
+    }
+    affector ColourFader
+    {
+        // Configuración del modificador
+        red -0.25
+        green -0.25
+        blue -0.25
+    }
+    affector Scaler
+    {
+        // Configuración del modificador
+        scale_range     0.5 1.5
+        rate            40
+    }
+}

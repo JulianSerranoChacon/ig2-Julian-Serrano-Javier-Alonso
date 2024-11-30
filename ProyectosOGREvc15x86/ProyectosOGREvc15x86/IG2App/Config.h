@@ -27,6 +27,10 @@ const float TIEMPO_BAILE = 4000.0f;
 const float TIEMPO_MAX = 21000.0f;
 const float MUESTRA_ESPADAS = 10000.0f;
 
+const float TIEMPO_OGREHEAD_EMIT_HUM = 5000.0f;
+const float TIEMPO_OGREHEAD_STOP_EMIT_HUM = 19800.0f;
+const std::string DIRECCION_PART_HUMO = "Particulas/HumoOgreHead";
+
 const std::string DIRECCION_MAT_PERLA = "Examples/CloudySky";
 const std::string DIRECCION_MAT_MURO = "Examples/BumpyMetal";
 const std::string DIRECCION_MAT_SUELO = "Examples/BeachStones";

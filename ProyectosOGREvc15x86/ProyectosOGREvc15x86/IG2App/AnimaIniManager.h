@@ -4,6 +4,7 @@
 #include "OgreAnimation.h"
 #include <vector>
 #include "OgreTimer.h"
+#include "OgreParticleSystem.h"
 
 using namespace Ogre;
 class IG2App;
@@ -32,6 +33,8 @@ private:
 
 	Ogre::SceneNode* mOgreHeadNode;
 	Ogre::Entity* ogreHead;
+	Ogre::ParticleSystem* OgreHeadPartSys;
+	bool OgreHeadSmokeEmitiendo;
 
 	bool Bailando;
 	bool Corriendo;

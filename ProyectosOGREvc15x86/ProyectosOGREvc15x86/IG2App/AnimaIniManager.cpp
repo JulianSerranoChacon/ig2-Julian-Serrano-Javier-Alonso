@@ -67,6 +67,15 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	_runBottom->setLoop(true);		
 
 	Animate();
+
+
+	OgreHeadPartSys = mSM->createParticleSystem("AnimHumoOgrehead", DIRECCION_PART_HUMO);
+
+	OgreHeadPartSys->setEmitting(false);
+	OgreHeadSmokeEmitiendo = false;
+
+	Ogre::SceneNode* _n = mOgreHeadNode->createChildSceneNode();
+	_n->attachObject(OgreHeadPartSys);
 }
 
 AnimaIniManager::~AnimaIniManager()
@@ -91,7 +100,8 @@ void AnimaIniManager::frameRendered(const Ogre::FrameEvent& evt)
 		return;
 
 	_movement->addTime(evt.timeSinceLastFrame);
-	if (_timer->getMilliseconds() < TIEMPO_BAILE) {
+	if (_timer->getMilliseconds() < TIEMPO_BAILE) {		
+
 		_dance->addTime(evt.timeSinceLastFrame);
 		if (!Bailando) {
 			_dance->setTimePosition(0);
@@ -103,7 +113,7 @@ void AnimaIniManager::frameRendered(const Ogre::FrameEvent& evt)
 		}		
 	}
 	else {
-		if (_timer->getMilliseconds() >= TIEMPO_BAILE) {
+		if (_timer->getMilliseconds() >= TIEMPO_BAILE) {			
 			_runTop->addTime(evt.timeSinceLastFrame);
 			_runBottom->addTime(evt.timeSinceLastFrame);
 			if (!Corriendo) {
@@ -120,6 +130,18 @@ void AnimaIniManager::frameRendered(const Ogre::FrameEvent& evt)
 	espadadDer->setVisible(_timer->getMilliseconds() > MUESTRA_ESPADAS);
 	espadadIz->setVisible(_timer->getMilliseconds() > MUESTRA_ESPADAS);
 
+	if (_timer->getMilliseconds() > TIEMPO_OGREHEAD_EMIT_HUM) {
+		if (!OgreHeadSmokeEmitiendo) {
+			OgreHeadSmokeEmitiendo = true;
+			OgreHeadPartSys->setEmitting(true);
+		}
+	}
+	if (_timer->getMilliseconds() >= TIEMPO_OGREHEAD_STOP_EMIT_HUM) {
+		if (OgreHeadSmokeEmitiendo) {
+			OgreHeadSmokeEmitiendo = false;
+			OgreHeadPartSys->setEmitting(false);
+		}
+	}
 
 	if (_timer->getMilliseconds() >= TIEMPO_MAX) {
 		_timer->reset();
