@@ -44,3 +44,18 @@ material Examples/CloudySky
 		}
 	}
 }
+material Examples/BeachStonesAnim
+{
+	technique
+	{
+		pass
+		{
+			ambient 20 20 20
+
+			texture_unit
+			{
+				texture BeachStones.jpg
+			}
+		}
+	}
+}

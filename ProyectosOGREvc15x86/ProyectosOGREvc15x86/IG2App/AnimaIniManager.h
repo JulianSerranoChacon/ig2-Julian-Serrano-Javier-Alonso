@@ -15,7 +15,9 @@ public:
 	virtual ~AnimaIniManager();
 	void clear();
 	void frameRendered(const Ogre::FrameEvent& evt);
-	void setRun(bool update = false) {_update = update;}
+	void setRun(bool update = false) {_update = update;
+	mSM->setAmbientLight(ColourValue(0, 0, 0));
+	}
 private:
 	void Animate();
 	IG2App* app;
@@ -25,7 +27,7 @@ private:
 	SceneNode* mSinbadNode;
 	Ogre::Entity* sinbad;
 	Ogre::Entity* espadadDer;
-	Ogre::Entity* espadadIz;
+	Ogre::Entity* espadadIz;	
 
 
 	Ogre::SceneNode* mOgreHeadNode;

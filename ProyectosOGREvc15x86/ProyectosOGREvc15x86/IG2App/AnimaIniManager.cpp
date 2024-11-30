@@ -56,6 +56,8 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	mOgreHeadNode->setScale(Vector3(5, 5, 5));
 	entities.push_back(ogreHead);
 
+	mSM->setAmbientLight(ColourValue(0.03, 0.03, 0.03));
+
 
 	_dance = sinbad->getAnimationState("Dance");
 	_runTop = sinbad->getAnimationState("RunTop");
