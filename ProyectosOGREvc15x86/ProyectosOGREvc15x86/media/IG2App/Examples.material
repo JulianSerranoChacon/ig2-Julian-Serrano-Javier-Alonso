@@ -44,7 +44,7 @@ material Examples/CloudySky
 		}
 	}
 }
-material Examples/BeachStonesAnim
+material Examples/floorAnim
 {
 	technique
 	{
@@ -54,7 +54,7 @@ material Examples/BeachStonesAnim
 
 			texture_unit
 			{
-				texture BeachStones.jpg
+				texture floor_diffuse.png
 			}
 		}
 	}
