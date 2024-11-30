@@ -10,11 +10,12 @@ particle_system Particulas/HumoOgreHead
     {
         // Configuración del emisor
         angle           25
-        emission_rate   45
+        emission_rate   6
         time_to_live    2
         direction       0 0 -1
         velocity_min    30
-        velocity_max    70        
+        velocity_max    70     
+        colour   0.3 0.3 0.3 0.4
     }
     affector ColourFader
     {

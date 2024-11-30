@@ -85,12 +85,13 @@ AnimaIniManager::~AnimaIniManager()
 
 void AnimaIniManager::clear()
 {	
-	for (int i = 0; i < entities.size(); i++) {
+	/*for (int i = 0; i < entities.size(); i++) {
 		if (entities[i] != nullptr) {
 			mSM->destroyEntity(entities[i]);
 			entities[i] = nullptr;
 		}
-	}
+	}*/
+	mSM->destroyAllEntities();
 	//sinbad->getAllAnimationStates()->removeAllAnimationStates();
 }
 
