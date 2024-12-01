@@ -69,13 +69,22 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	Animate();
 
 
-	OgreHeadPartSys = mSM->createParticleSystem("AnimHumoOgrehead", DIRECCION_PART_HUMO);
+	ogreHeadPartSys = mSM->createParticleSystem("AnimHumoOgrehead", DIRECCION_PART_HUMO);
 
-	OgreHeadPartSys->setEmitting(false);
+	ogreHeadPartSys->setEmitting(false);
 	OgreHeadSmokeEmitiendo = false;
 
 	Ogre::SceneNode* _n = mOgreHeadNode->createChildSceneNode();
-	_n->attachObject(OgreHeadPartSys);
+	_n->attachObject(ogreHeadPartSys);
+
+	firePartSys = mSM->createParticleSystem("AnimFire", DIRECCION_PART_FUEGO);
+
+	firePartSys->setEmitting(true);
+
+	fireNode = mSM->getRootSceneNode()->createChildSceneNode();
+	fireNode->translate(0, 0,-1000);
+
+	fireNode->attachObject(firePartSys);
 }
 
 AnimaIniManager::~AnimaIniManager()
@@ -134,13 +143,13 @@ void AnimaIniManager::frameRendered(const Ogre::FrameEvent& evt)
 	if (_timer->getMilliseconds() > TIEMPO_OGREHEAD_EMIT_HUM) {
 		if (!OgreHeadSmokeEmitiendo) {
 			OgreHeadSmokeEmitiendo = true;
-			OgreHeadPartSys->setEmitting(true);
+			ogreHeadPartSys->setEmitting(true);
 		}
 	}
 	if (_timer->getMilliseconds() >= TIEMPO_OGREHEAD_STOP_EMIT_HUM) {
 		if (OgreHeadSmokeEmitiendo) {
 			OgreHeadSmokeEmitiendo = false;
-			OgreHeadPartSys->setEmitting(false);
+			ogreHeadPartSys->setEmitting(false);
 		}
 	}
 

@@ -44,7 +44,7 @@ material Examples/CloudySky
 		}
 	}
 }
-material Examples/floorAnim
+material Examples/FloorAnim
 {
 	technique
 	{

@@ -15,7 +15,7 @@ particle_system Particulas/HumoOgreHead
         direction       0 0 -1
         velocity_min    30
         velocity_max    70     
-        colour   0.3 0.3 0.3 0.4
+        colour   0.5 0.5 0.5 0.4
     }
     affector ColourFader
     {
@@ -29,5 +29,40 @@ particle_system Particulas/HumoOgreHead
         // Configuración del modificador
         scale_range     0.5 1.5
         rate            40
+    }
+}
+particle_system Particulas/Fire
+{
+
+    billboard_type point
+    particle_width 150
+    particle_height 150
+    quota 500
+    material Examples/Smoke
+    emitter Point
+    {
+        // Configuración del emisor
+        angle           0.1
+        emission_rate   30
+        time_to_live    5
+        direction       0 1 0
+        velocity_min    90
+        velocity_max    130     
+    }
+    affector ColourFader
+    {
+        // Configuración del modificador
+        red -0.25
+        green -0.25
+        blue -0.25
+    }
+    affector ColourImage
+    {
+        image smokecolors.png
+    }
+    affector Scaler
+    {
+        // Configuración del modificador
+        rate            100
     }
 }
