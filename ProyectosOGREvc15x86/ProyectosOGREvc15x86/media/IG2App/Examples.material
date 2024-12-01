@@ -34,12 +34,13 @@ material Examples/CloudySky
 	{
 		pass
 		{
-			#lighting off			
+			#lighting off						
 
 			texture_unit
-			{
+			{				
 				texture clouds.jpg
 				scroll_anim 0.15 0
+				//tex_address_mode clamp
 			}
 		}
 	}
@@ -96,6 +97,56 @@ material Examples/Smoke
 			{
 				texture smoke.png
 				tex_address_mode clamp
+			}
+		}
+	}
+}
+vertex_program SphereHolesVS glsl
+{
+	source SphereHolesVS.glsl
+	default_params{ // Valores para las variable uniform
+	param_named_auto modelViewProjMat worldviewproj_matrix
+	}
+}
+fragment_program SphereHolesFS glsl
+{
+	source SphereHolesFS.glsl
+	default_params{ 
+		param_named texturaL int 0
+		param_named texturaM int 1
+		param_named texturaN int 2
+		param_named BF float 0.5
+		param_named intLuzAmb float 1.0
+		param_named_auto flipping render_target_flipping
+	}
+}
+
+material Examples/SphereHoles
+{
+	
+	technique
+	{		
+		pass
+		{
+			vertex_program_ref SphereHolesVS{}
+			fragment_program_ref SphereHolesFS{}
+
+			cull_hardware none
+			cull_software none
+			texture_unit
+			{
+				tex_address_mode clamp
+				texture BumpyMetal.jpg
+			}
+			texture_unit
+			{
+				tex_address_mode clamp
+				texture corrosion.jpg
+			}
+			texture_unit
+			{
+				tex_address_mode clamp
+				texture Dirt.jpg
 			}
 		}
 	}
