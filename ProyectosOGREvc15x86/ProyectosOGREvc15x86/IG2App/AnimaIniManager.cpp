@@ -1,10 +1,14 @@
 #include "AnimaIniManager.h"
 
+#include <OgreMesh.h>
 #include <OgreParticleEmitter.h>
 
 #include "IG2App.h"
 #include "Config.h"
+#include "IG2Object.h"
 #include "OgreKeyFrame.h"
+
+#include "Perla.h"
 
 using namespace Ogre;
 
@@ -92,6 +96,11 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	creaNodoConFuego(-600, yOffset);
 	creaNodoConFuego(750, yOffset);
 	creaNodoConFuego(-750, yOffset);
+
+	SceneNode* sNp = mSM->getRootSceneNode()->createChildSceneNode();
+	Perla* perla = new Perla(Vector3(0,-50,-200),sNp,mSM);
+	perla->setMaterialName(DIRECCION_MATERIAL_ESFERA);
+
 
 }
 

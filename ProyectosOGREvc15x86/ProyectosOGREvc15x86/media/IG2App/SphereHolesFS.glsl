@@ -3,7 +3,6 @@ in vec2 vUv0;
 uniform sampler2D texturaL;
 uniform sampler2D texturaM;
 uniform sampler2D texturaN;
-uniform float BF;
 uniform float intLuzAmb;
 out vec4 fFragColor;
 uniform float flipping;
@@ -22,15 +21,11 @@ void main() {
 
     if(colorCorrosion.r > 0.6){
         discard;
-    }else{
-        if(frontFacing){
-            color = color colorL;
-        }
-        else color = colorN;
     }
+    
+    if(frontFacing){
+        color = colorL;
+    }
+    else color = colorN;
     fFragColor = vec4(color, 1.0);
-
-
-
-
 }

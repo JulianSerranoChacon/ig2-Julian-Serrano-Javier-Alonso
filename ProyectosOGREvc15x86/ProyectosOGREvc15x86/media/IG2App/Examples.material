@@ -34,7 +34,7 @@ material Examples/CloudySky
 	{
 		pass
 		{
-			#lighting off						
+			lighting off						
 
 			texture_unit
 			{				
@@ -51,7 +51,7 @@ material Examples/Tusk
 	{
 		pass
 		{
-			#lighting off	
+			lighting off	
 
 			texture_unit
 			{
@@ -104,7 +104,7 @@ material Examples/Smoke
 vertex_program SphereHolesVS glsl
 {
 	source SphereHolesVS.glsl
-	default_params{ // Valores para las variable uniform
+	default_params{
 	param_named_auto modelViewProjMat worldviewproj_matrix
 	}
 }
@@ -115,7 +115,6 @@ fragment_program SphereHolesFS glsl
 		param_named texturaL int 0
 		param_named texturaM int 1
 		param_named texturaN int 2
-		param_named BF float 0.5
 		param_named intLuzAmb float 1.0
 		param_named_auto flipping render_target_flipping
 	}
@@ -130,23 +129,25 @@ material Examples/SphereHoles
 		{
 			vertex_program_ref SphereHolesVS{}
 			fragment_program_ref SphereHolesFS{}
+			
+			lighting off
 
 			cull_hardware none
 			cull_software none
 			texture_unit
 			{
+				texture BumpyMetal.jpg 2d
 				tex_address_mode clamp
-				texture BumpyMetal.jpg
 			}
 			texture_unit
 			{
+				texture corrosion.jpg 2d
 				tex_address_mode clamp
-				texture corrosion.jpg
 			}
 			texture_unit
 			{
+				texture Dirt.jpg 2d
 				tex_address_mode clamp
-				texture Dirt.jpg
 			}
 		}
 	}

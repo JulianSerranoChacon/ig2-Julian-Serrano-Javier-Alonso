@@ -34,6 +34,7 @@ const std::string DIRECCION_PART_HUMO = "Particulas/HumoOgreHead";
 
 const std::string DIRECCION_PART_HUMO_MAPA = "Particulas/HumoMapa";
 
+const std::string DIRECCION_MATERIAL_ESFERA = "Examples/SphereHoles";
 
 const float TIEMPO_EMIT_Fire = 0.0f;
 const float TIEMPO_STOP_EMIT_Fire = 17000.0f;

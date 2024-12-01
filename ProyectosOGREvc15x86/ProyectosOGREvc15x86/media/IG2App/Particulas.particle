@@ -27,7 +27,6 @@ particle_system Particulas/HumoOgreHead
     affector Scaler
     {
         // Configuración del modificador
-        scale_range     0.5 1.5
         rate            40
     }
 }
