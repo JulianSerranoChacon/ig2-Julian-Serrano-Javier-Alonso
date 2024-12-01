@@ -73,3 +73,35 @@ particle_system Particulas/Fire
         rotation_range_end           180
     }
 }
+particle_system Particulas/HumoMapa
+{
+
+    billboard_type point
+    particle_width 80
+    particle_height 80
+    quota 500
+    material Examples/Smoke
+    emitter Point
+    {
+        // Configuración del emisor
+        angle           90
+        emission_rate   30
+        time_to_live    5
+        direction       0 1 0
+        velocity_min    30
+        velocity_max    70     
+        colour   0.5 0.5 0.5 0.4
+    }
+    affector ColourFader
+    {
+        // Configuración del modificador
+        red -0.25
+        green -0.25
+        blue -0.25
+    }
+    affector Scaler
+    {
+        // Configuración del modificador
+        rate            50
+    }
+}

@@ -109,6 +109,12 @@ void AnimaIniManager::clear()
 		}
 	}*/
 	mSM->destroyAllEntities();
+	for (int i = 0; i < firePartSysVector.size(); i++)
+		firePartSysVector[i]->setEmitting(false);
+	emitiendoFuego = false;
+	if (ogreHeadPartSys != nullptr)
+		ogreHeadPartSys->setEmitting(false);
+	ogreHeadSmokeEmitiendo = false;
 	//sinbad->getAllAnimationStates()->removeAllAnimationStates();
 }
 

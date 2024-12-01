@@ -4,7 +4,7 @@ material Examples/BeachStones
 	{
 		pass
 		{
-			ambient 0.1 0.1 0.1
+			ambient 0.75 0.75 0.75
 
 			texture_unit
 			{

@@ -82,7 +82,7 @@ void Heroe::createLight(uint i)
 		
 		mLightNode->attachObject(luz);
 		mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
-		mLightNode->setPosition(Ogre::Vector3(0, 80, 0));
+		mLightNode->setPosition(Ogre::Vector3(0, 30, 0));
 		break;
 	case 2:		
 		luz->setType(Ogre::Light::LT_POINT);

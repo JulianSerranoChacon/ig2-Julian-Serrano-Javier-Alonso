@@ -69,7 +69,7 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 	Suel->setMaterialName(matSuelo);
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
 	nodoSuelo->setPosition((nFils-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nCols-1)*CUBE_SIZE/2);
-	nodoSuelo->setScale(nFils*CUBE_SIZE,0, nCols*CUBE_SIZE);
+	nodoSuelo->setScale(nFils*CUBE_SIZE,1, nCols*CUBE_SIZE);
 	nodoSuelo->attachObject(Suel);
 
 	mNode->setPosition(CentraLab(nFils), 0, CentraLab(nCols));
@@ -96,6 +96,8 @@ void LaberintoManager::frameRendered(const Ogre::FrameEvent& evt)
 void LaberintoManager::ReadChar(char c, int i, int j)
 {
 	IG2Object* obj;
+	ParticleSystem* humo;
+	Ogre::SceneNode* n;
 	switch (c) {
 	case 'x':		
 		labArray[i][j] = false;
@@ -125,6 +127,20 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 		labArray[i][j] = true;
 		obj = new EnemySeeker(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM, "RZR-002.mesh", labArray, app);
 		enemigos.push_back((Enemy*)obj);
+		break;
+
+	case 's':
+		labArray[i][j] = true;
+		obj = new Perla(Ogre::Vector3(CUBE_SIZE * j, 0, CUBE_SIZE * i), mNode->createChildSceneNode(), mSM);
+		obj->setScale(Ogre::Vector3(PERLA_SCALE, PERLA_SCALE, PERLA_SCALE));
+		perlas.push_back((Perla*)obj);
+		obj->setMaterialName(matBolas);
+
+		humo = mSM->createParticleSystem("Humo" + to_string(i) + to_string(j), DIRECCION_PART_HUMO_MAPA);
+		humo->setEmitting(true);
+		n = mSM->getRootSceneNode()->createChildSceneNode();
+		n->setPosition(obj->getPosition());
+		n->attachObject(humo);
 		break;
 	default:
 		break;

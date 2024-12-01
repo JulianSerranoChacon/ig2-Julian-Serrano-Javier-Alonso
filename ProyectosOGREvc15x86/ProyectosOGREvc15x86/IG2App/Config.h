@@ -32,6 +32,9 @@ const float TIEMPO_OGREHEAD_STOP_EMIT_HUM = 19800.0f;
 const std::string DIRECCION_PART_HUMO = "Particulas/HumoOgreHead";
 
 
+const std::string DIRECCION_PART_HUMO_MAPA = "Particulas/HumoMapa";
+
+
 const float TIEMPO_EMIT_Fire = 0.0f;
 const float TIEMPO_STOP_EMIT_Fire = 17000.0f;
 const std::string DIRECCION_PART_FUEGO = "Particulas/Fire";

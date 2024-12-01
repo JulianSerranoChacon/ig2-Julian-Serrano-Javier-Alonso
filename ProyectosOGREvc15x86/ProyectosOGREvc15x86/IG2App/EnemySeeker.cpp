@@ -65,24 +65,24 @@ void EnemySeeker::creaEntidad()
 {
 	mNode->setScale(Vector3(7, 7, 7));
 	Ogre::Entity* ent = mSM->createEntity("penguin.mesh");
-
-	Ogre::SceneNode* pN = mNode->createChildSceneNode("ninja");
+	string name = "ninja" + to_string(PosX);
+	Ogre::SceneNode* pN = mNode->createChildSceneNode(name);
 	pN->attachObject(ent);
-	Ogre::Node* penguin = mNode->getChild("ninja");
+	Ogre::Node* penguin = mNode->getChild(name);
 	penguin->translate(Vector3(0, 3, 0));
 	penguin->setScale(Vector3(0.1, 0.1, 0.1));
 
 	rotador = pN->createChildSceneNode();
-	crearCabeza("h1", Vector3(0, 0, 30), Vector3(0.4, 0.4, 0.4), Quaternion(Ogre::Radian(0.0f), Vector3(0, 0, 0)));
-	crearCabeza("h2", Vector3(0, 0, -30), Vector3(0.4, 0.4, -0.4), Quaternion(Ogre::Radian(0.0f), Vector3(0, 0, 0)));
+	crearCabeza("h1" + to_string(PosX), Vector3(0, 0, 30), Vector3(0.4, 0.4, 0.4), Quaternion(Ogre::Radian(0.0f), Vector3(0, 0, 0)));
+	crearCabeza("h2" + to_string(PosX), Vector3(0, 0, -30), Vector3(0.4, 0.4, -0.4), Quaternion(Ogre::Radian(0.0f), Vector3(0, 0, 0)));
 
-	crearCabeza("h3", Vector3(30, 0, 0), Vector3(0.4, 0.4, 0.4), Quaternion(Ogre::Radian(1.5708f), Vector3(0, 1, 0)));
-	crearCabeza("h4", Vector3(-30, 0, 0), Vector3(0.4, 0.4, -0.4), Quaternion(Ogre::Radian(4.71239f), Vector3(0, -1, 0)));
+	crearCabeza("h3" + to_string(PosX), Vector3(30, 0, 0), Vector3(0.4, 0.4, 0.4), Quaternion(Ogre::Radian(1.5708f), Vector3(0, 1, 0)));
+	crearCabeza("h4" + to_string(PosX), Vector3(-30, 0, 0), Vector3(0.4, 0.4, -0.4), Quaternion(Ogre::Radian(4.71239f), Vector3(0, -1, 0)));
 
 
-	crearCabeza("h5", Vector3(20, 0, 20), Vector3(0.4, 0.4, 0.4), Quaternion(Ogre::Radian(0.785398), Vector3(0, 1, 0)));
-	crearCabeza("h6", Vector3(-20, 0, -20), Vector3(0.4, 0.4, -0.4), Quaternion(Ogre::Radian(5.49779f), Vector3(0, -1, 0)));
+	crearCabeza("h5" + to_string(PosX), Vector3(20, 0, 20), Vector3(0.4, 0.4, 0.4), Quaternion(Ogre::Radian(0.785398), Vector3(0, 1, 0)));
+	crearCabeza("h6" + to_string(PosX), Vector3(-20, 0, -20), Vector3(0.4, 0.4, -0.4), Quaternion(Ogre::Radian(5.49779f), Vector3(0, -1, 0)));
 
-	crearCabeza("h7", Vector3(-20, 0, 20), Vector3(0.4, 0.4, 0.4), Quaternion(Ogre::Radian(5.49779f), Vector3(0, 1, 0)));
-	crearCabeza("h8", Vector3(20, 0, -20), Vector3(0.4, 0.4, -0.4), Quaternion(Ogre::Radian(0.785398), Vector3(0, -1, 0)));
+	crearCabeza("h7" + to_string(PosX), Vector3(-20, 0, 20), Vector3(0.4, 0.4, 0.4), Quaternion(Ogre::Radian(5.49779f), Vector3(0, 1, 0)));
+	crearCabeza("h8" + to_string(PosX), Vector3(20, 0, -20), Vector3(0.4, 0.4, -0.4), Quaternion(Ogre::Radian(0.785398), Vector3(0, -1, 0)));
 }
