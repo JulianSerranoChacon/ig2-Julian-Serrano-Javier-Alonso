@@ -16,6 +16,7 @@ public:
 	virtual ~AnimaIniManager();
 	void clear();
 	void frameRendered(const Ogre::FrameEvent& evt);
+	void creaNodoConFuego(int xOffset, int yOffset);
 	void setRun(bool update = false) {_update = update;
 	mSM->setAmbientLight(ColourValue(0, 0, 0));
 	}
@@ -34,8 +35,10 @@ private:
 	Ogre::SceneNode* mOgreHeadNode;
 	Ogre::Entity* ogreHead;
 	Ogre::ParticleSystem* ogreHeadPartSys;
-	Ogre::ParticleSystem* firePartSys;
-	bool OgreHeadSmokeEmitiendo;
+	bool ogreHeadSmokeEmitiendo;
+
+	std::vector<ParticleSystem*> firePartSysVector; 
+	bool emitiendoFuego;
 
 	bool Bailando;
 	bool Corriendo;
@@ -53,8 +56,6 @@ private:
 	Vector3 ThirdPos = Vector3(-500,0,0);
 
 	Vector3 headOffset = Vector3(-350, 0, 0);
-
-	Ogre::SceneNode* fireNode;
 
 	//Para dejar de ejecutr el IniAnimatedScene
 	bool _update;
