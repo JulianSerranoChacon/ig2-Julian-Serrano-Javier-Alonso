@@ -39,6 +39,7 @@ const float TIEMPO_EMIT_Fire = 0.0f;
 const float TIEMPO_STOP_EMIT_Fire = 17000.0f;
 const std::string DIRECCION_PART_FUEGO = "Particulas/Fire";
 
-const std::string DIRECCION_MAT_PERLA = "Examples/CloudySky";
+const std::string DIRECCION_MAT_PERLA = "Examples/Tusk";
+const std::string DIRECCION_MAT_CIELO = "Examples/CloudySky";
 const std::string DIRECCION_MAT_MURO = "Examples/BumpyMetal";
 const std::string DIRECCION_MAT_SUELO = "Examples/BeachStones";

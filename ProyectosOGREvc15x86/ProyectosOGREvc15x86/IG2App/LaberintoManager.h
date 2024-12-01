@@ -34,5 +34,6 @@ private:
 	std::string matMuro;
 	std::string matSuelo;
 	uint luz;
+	void CreateSky();
 };
 

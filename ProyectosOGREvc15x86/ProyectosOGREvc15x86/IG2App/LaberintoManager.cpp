@@ -11,6 +11,7 @@
 LaberintoManager::LaberintoManager(IG2App* _app, SceneNode* sn, SceneManager* sm, std::string file) : app(_app), mNode(sn), mSM(sm)							
 {
 	app->addInputListener(this);	
+	CreateSky();
 	loadLevelFromFile(file);
 }
 
@@ -68,8 +69,8 @@ void LaberintoManager::loadLevelFromFile(std::string str)
 	Suel = mSM->createEntity("suelo");	
 	Suel->setMaterialName(matSuelo);
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
-	nodoSuelo->setPosition((nFils-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nCols-1)*CUBE_SIZE/2);
-	nodoSuelo->setScale(nFils*CUBE_SIZE,1, nCols*CUBE_SIZE);
+	nodoSuelo->setPosition((nCols-1)*CUBE_SIZE/2, (float)CUBE_SIZE/-2,(nFils-1)*CUBE_SIZE/2);
+	nodoSuelo->setScale(nCols*CUBE_SIZE,1, nFils*CUBE_SIZE);
 	nodoSuelo->attachObject(Suel);
 
 	mNode->setPosition(CentraLab(nFils), 0, CentraLab(nCols));
@@ -154,4 +155,13 @@ double LaberintoManager::CentraLab(int a) {
 	b = b * -1;
 	b = b / 2;
 	return b;
+}
+
+void LaberintoManager::CreateSky()
+{
+	Ogre::Plane plane;
+	plane.d = 1000;
+	plane.normal = Ogre::Vector3::UNIT_Y;
+
+	mSM->setSkyPlane(true, plane, DIRECCION_MAT_CIELO, 1500, 50, true, 1.5, 50, 50);
 }

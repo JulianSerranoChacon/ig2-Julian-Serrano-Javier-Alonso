@@ -1,13 +1,13 @@
 18 
 26 
-Examples/CloudySky
+Examples/Tusk
 Examples/BumpyMetal
 Examples/BeachStones
 1
 xxxxxxxxxxxxxxxxxxxxxxxxxx 
 xoooooxxxxxoooooxxxxooooox 
-xoxxxoooooooxxxooooooxxxox 
-xoooooxoxoxoxxxoxxoxvoooox 
+xoxxxoooooooxxxooooovxxxox 
+xoooooxoxoxoxxxoxxoxooooox 
 xoxxxoxoxoxooooooooxoxxxox 
 xoxxxoxoxoxoxxxxxoxxoxxoox 
 xoooooooooooooooooooooooxx 
@@ -16,8 +16,8 @@ xoooooovssssssssooooooooox
 xoxoxoxxoxoxxxxxxoxoxoxxxx 
 xoooooxxoxooooooooxoxoxxxx 
 xoxxxoxxoxxoxxoxxoooooooox 
-xoooooooooooooooooxxxvxxox 
-xoxoxxxoxxxxxxxxxoooooooox 
+xoooooooooooooooooxxxoxxox 
+xoxoxxxoxxxxxxxxxoooovooox 
 xoooooohooooooooooxxxoxxxx 
 xoxxoxxoxxxxxxxxxoooooooox 
 xoooooooooooooooooxxxoxxxx 

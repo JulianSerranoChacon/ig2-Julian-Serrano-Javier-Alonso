@@ -17,9 +17,7 @@ public:
 	void clear();
 	void frameRendered(const Ogre::FrameEvent& evt);
 	void creaNodoConFuego(int xOffset, int yOffset);
-	void setRun(bool update = false) {_update = update;
-	mSM->setAmbientLight(ColourValue(0, 0, 0));
-	}
+	void setRun(bool update = false) {_update = update;	}
 private:
 	void Animate();
 	IG2App* app;

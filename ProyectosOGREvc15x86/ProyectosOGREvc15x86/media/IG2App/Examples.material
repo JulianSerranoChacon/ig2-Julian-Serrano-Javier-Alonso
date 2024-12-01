@@ -44,6 +44,21 @@ material Examples/CloudySky
 		}
 	}
 }
+material Examples/Tusk
+{
+	technique
+	{
+		pass
+		{
+			#lighting off	
+
+			texture_unit
+			{
+				texture tusk.jpg
+			}
+		}
+	}
+}
 material Examples/FloorAnim
 {
 	technique
@@ -55,6 +70,11 @@ material Examples/FloorAnim
 			texture_unit
 			{
 				texture floor_diffuse.png
+			}
+			texture_unit
+			{
+				texture lightMap.jpg
+				colour_op modulate
 			}
 		}
 	}

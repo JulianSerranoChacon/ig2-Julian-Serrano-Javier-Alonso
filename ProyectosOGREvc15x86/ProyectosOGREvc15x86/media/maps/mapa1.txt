@@ -1,6 +1,6 @@
 19
 19
-Examples/CloudySky
+Examples/Tusk
 Examples/BumpyMetal
 Examples/BeachStones
 1
