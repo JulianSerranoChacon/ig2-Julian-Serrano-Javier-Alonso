@@ -139,7 +139,7 @@ void LaberintoManager::ReadChar(char c, int i, int j)
 		humo = mSM->createParticleSystem("Humo" + to_string(i) + to_string(j), DIRECCION_PART_HUMO_MAPA);
 		humo->setEmitting(true);
 		n = mSM->getRootSceneNode()->createChildSceneNode();
-		n->setPosition(CentraLab(i), 0, CentraLab(j));
+		n->setPosition(CentraLab(j), 0, CentraLab(i));
 		n->attachObject(humo);
 		humo = nullptr;
 		n = nullptr;
