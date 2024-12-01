@@ -131,8 +131,6 @@ material Examples/SphereHoles
 		{
 			vertex_program_ref SphereHolesVS{}
 			fragment_program_ref SphereHolesFS{}
-			
-			lighting off
 
 			cull_hardware none
 			cull_software none
