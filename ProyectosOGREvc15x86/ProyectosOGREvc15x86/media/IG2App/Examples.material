@@ -104,14 +104,16 @@ material Examples/Smoke
 vertex_program SphereHolesVS glsl
 {
 	source SphereHolesVS.glsl
-	default_params{
+	default_params
+	{
 	param_named_auto modelViewProjMat worldviewproj_matrix
 	}
 }
 fragment_program SphereHolesFS glsl
 {
 	source SphereHolesFS.glsl
-	default_params{ 
+	default_params
+	{ 
 		param_named texturaL int 0
 		param_named texturaM int 1
 		param_named texturaN int 2
