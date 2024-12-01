@@ -82,7 +82,7 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	firePartSys->setEmitting(true);
 
 	fireNode = mSM->getRootSceneNode()->createChildSceneNode();
-	fireNode->translate(0, 0,-1000);
+	fireNode->translate(0, result.y * -0.28,-500);
 
 	fireNode->attachObject(firePartSys);
 }
