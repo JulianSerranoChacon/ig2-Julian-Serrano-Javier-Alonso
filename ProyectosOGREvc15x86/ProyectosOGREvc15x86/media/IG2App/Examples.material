@@ -114,9 +114,9 @@ fragment_program SphereHolesFS glsl
 	source SphereHolesFS.glsl
 	default_params
 	{ 
-		param_named texturaL int 0
-		param_named texturaM int 1
-		param_named texturaN int 2
+		param_named texturaC int 0
+		param_named texturaB int 1
+		param_named texturaD int 2
 		param_named intLuzAmb float 1.0
 		param_named_auto flipping render_target_flipping
 	}
@@ -134,14 +134,15 @@ material Examples/SphereHoles
 
 			cull_hardware none
 			cull_software none
+			
 			texture_unit
 			{
-				texture BumpyMetal.jpg 2d
+				texture corrosion.jpg 2d
 				tex_address_mode clamp
 			}
 			texture_unit
 			{
-				texture corrosion.jpg 2d
+				texture BumpyMetal.jpg 2d
 				tex_address_mode clamp
 			}
 			texture_unit
