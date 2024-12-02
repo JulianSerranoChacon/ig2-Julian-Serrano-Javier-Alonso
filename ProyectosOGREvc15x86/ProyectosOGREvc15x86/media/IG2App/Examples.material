@@ -161,6 +161,7 @@ vertex_program spaceSkyZoomLightShaderVS glsl
 	default_params
 	{
 		param_named_auto modelViewProjMat worldviewproj_matrix
+		param_named_auto sintime sintime_0_2pi 15;
 	}
 
 }
@@ -174,7 +175,6 @@ fragment_program spaceSkyZoomLightShaderFS glsl
 		param_named texturaL int 0
 		param_named texturaM int 1
 		param_named BF float 0.5
-		param_named_auto sintime sintime_0_2pi 15;
 		param_named intLuzAmb float 1.0
 	}
 }
@@ -192,11 +192,13 @@ material Examples/spaceSkyZoomLightShader
 			
 			texture_unit
 			{
-				texture spaceSky.jpg 2d
+				texture lightMap.jpg 2d
+				tex_address_mode clamp 
 			}
 			texture_unit
 			{
-				texture lightMap.jpg 2d
+				texture spacesky.jpg 2d
+				//tex_address_mode clamp 
 			}
 		}
 	}
