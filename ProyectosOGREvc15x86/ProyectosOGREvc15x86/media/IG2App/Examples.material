@@ -28,7 +28,7 @@ material Examples/BumpyMetal
 		}
 	}
 }
-material Examples/CloudySky
+material Examples/SpaceSky
 {
 	technique
 	{
@@ -38,7 +38,7 @@ material Examples/CloudySky
 
 			texture_unit
 			{				
-				texture clouds.jpg
+				texture spacesky.jpg
 				scroll_anim 0.15 0
 				//tex_address_mode clamp
 			}
@@ -149,6 +149,54 @@ material Examples/SphereHoles
 			{
 				texture Dirt.jpg 2d
 				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+vertex_program spaceSkyZoomLightShaderVS glsl
+{
+	source spaceSkyZoomLightShaderVS.glsl
+
+	default_params
+	{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+	}
+
+}
+
+fragment_program spaceSkyZoomLightShaderFS glsl
+{
+	source spaceSkyZoomLightShaderFS.glsl
+
+	default_params
+	{
+		param_named texturaL int 0
+		param_named texturaM int 1
+		param_named BF float 0.5
+		param_named_auto sintime sintime_0_2pi 15;
+		param_named intLuzAmb float 1.0
+	}
+}
+
+
+material Examples/spaceSkyZoomLightShader
+{
+
+	technique{
+		pass
+		{
+			vertex_program_ref spaceSkyZoomLightShaderVS{}
+			fragment_program_ref spaceSkyZoomLightShaderFS{}
+
+			
+			texture_unit
+			{
+				texture spaceSky.jpg 2d
+			}
+			texture_unit
+			{
+				texture lightMap.jpg 2d
 			}
 		}
 	}

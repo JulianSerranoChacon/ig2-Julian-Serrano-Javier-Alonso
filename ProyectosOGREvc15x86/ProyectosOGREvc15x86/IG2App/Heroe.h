@@ -13,7 +13,7 @@ public:
 	virtual void takeDamage();	
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& ev);
 	void frameRendered(const Ogre::FrameEvent& evt);	
-	void addPerl() { numPerls++; updateTextBox(); };
+	void addPerl() { numPerls++; updateTextBox();};
 	int getPerl() { return numPerls; };
 
 private:

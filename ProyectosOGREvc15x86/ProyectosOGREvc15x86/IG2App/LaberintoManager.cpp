@@ -161,7 +161,7 @@ void LaberintoManager::CreateSky()
 {
 	Ogre::Plane plane;
 	plane.d = 1000;
-	plane.normal = Ogre::Vector3::UNIT_Y;
+	plane.normal = -Ogre::Vector3::UNIT_Y;
 
-	mSM->setSkyPlane(true, plane, DIRECCION_MAT_CIELO, 1500, 50, true, 1.5, 50, 50);
+	mSM->setSkyPlane(true, plane, DIRECCION_MAT_CIELO_ZOOM, 1500, 50, true, 1.5, 50, 50);
 }
