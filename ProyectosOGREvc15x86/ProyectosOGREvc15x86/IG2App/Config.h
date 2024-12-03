@@ -18,6 +18,7 @@ const float OGRE_SCALE_ANIM = 30.0f;
 const float SUELO_SCALE_ANIM = 7000.0f;
 const float SUELO_BAJAR_ANIM = -2.0f;
 const std::string DIR_MAT_SUELO_ANIM = "Examples/FloorAnim";
+const std::string DIR_MAT_AGUA_ANIM = "Examples/wavesShader";
 const float ANIM_DURATION = 21.0f;
 const float STOP_DANCING = 4.0f;
 const float SPIN = 10.0f;

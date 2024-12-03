@@ -30,7 +30,8 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 		SUBDIVISION_LUZ_PLANO, SUBDIVISION_LUZ_PLANO, true, 1, 20, 20, Vector3::UNIT_Z);
 	//Creación del suelo
 	Ogre::Entity* Suel = mSM->createEntity("sueloAnim");
-	Suel->setMaterialName(DIR_MAT_SUELO_ANIM);
+	//Suel->setMaterialName(DIR_MAT_SUELO_ANIM);
+	Suel->setMaterialName(DIR_MAT_AGUA_ANIM);
 	Ogre::SceneNode* nodoSuelo = mNode->createChildSceneNode();
 	//Ogre::SceneNode* nodoSuelo = mSM->getRootSceneNode()->createChildSceneNode("SueloAnim");
 
