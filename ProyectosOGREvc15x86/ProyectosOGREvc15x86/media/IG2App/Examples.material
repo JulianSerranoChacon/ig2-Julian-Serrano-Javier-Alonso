@@ -192,18 +192,28 @@ material Examples/spaceSkyZoomLightShader
 			
 			texture_unit
 			{
-				texture lightMap.jpg 2d
-				tex_address_mode clamp 
+				texture spacesky.jpg 2d
+				//tex_address_mode clamp 
 			}
 			texture_unit
 			{
-				texture spacesky.jpg 2d
-				//tex_address_mode clamp 
+				texture lightMap.jpg 2d
+				tex_address_mode clamp 
 			}
 		}
 	}
 }
 
+vertex_program wavesShaderVS glsl
+{
+	source wavesShaderVS.glsl
+
+	default_params
+	{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+		param_named_auto sintime sintime_0_2pi 15
+	}
+}
 fragment_program wavesShaderFS glsl
 {
 	source wavesShaderFS.glsl
@@ -213,18 +223,8 @@ fragment_program wavesShaderFS glsl
 		param_named textura1 int 0		
 	}
 }
-fragment_program wavesShaderVS glsl
-{
-	source wavesShaderVS.glsl
 
-	default_params
-	{
-		param_named_auto modelViewProjMat worldviewproj_matrix
-		param_named_auto sintime sintime_0_2pi 15;		
-	}
-}
-
-material Examples/wavesShader	
+material Examples/wavesShader
 {
 
 	technique{
@@ -237,7 +237,6 @@ material Examples/wavesShader
 			texture_unit
 			{
 				texture Water02.jpg 2d
-				
 			}
 		}
 	}

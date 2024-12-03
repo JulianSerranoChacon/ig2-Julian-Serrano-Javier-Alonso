@@ -26,7 +26,7 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 	espadadIz = mSM->createEntity("Sword.mesh");	
 	sinbad->attachObjectToBone("Handle.L", espadadIz);
 
-	Ogre::MeshManager::getSingleton().createPlane("sueloAnim", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Plane(Vector3::UNIT_Y, 0), 1, 1,
+	Ogre::MeshManager::getSingleton().createPlane("sueloAnim", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Plane(Vector3::UNIT_Y, 0), SUELO_SCALE_ANIM, SUELO_SCALE_ANIM,
 		SUBDIVISION_LUZ_PLANO, SUBDIVISION_LUZ_PLANO, true, 1, 20, 20, Vector3::UNIT_Z);
 	//Creación del suelo
 	Ogre::Entity* Suel = mSM->createEntity("sueloAnim");
@@ -54,7 +54,7 @@ AnimaIniManager::AnimaIniManager(IG2App* _app, SceneNode* sn, SceneManager* sm) 
 
 	nodoSuelo->attachObject(Suel);
 	nodoSuelo->setPosition(0, result.y * -0.56 , 0);
-	nodoSuelo->setScale(SUELO_SCALE_ANIM,0, SUELO_SCALE_ANIM);
+	//nodoSuelo->setScale(SUELO_SCALE_ANIM,0, SUELO_SCALE_ANIM);
 
 	entities.push_back(Suel);
 
