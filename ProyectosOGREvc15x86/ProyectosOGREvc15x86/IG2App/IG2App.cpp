@@ -16,6 +16,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
         }
 
         mAni = nullptr;
+        if (mLab == nullptr)
         mLab = new LaberintoManager(this, mSM->getRootSceneNode()->createChildSceneNode("Laberinto"), mSM, "mapa2.txt");
     }
 
